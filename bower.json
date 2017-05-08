@@ -1,0 +1,14 @@
+{
+  "name": "Shopping_Mall_02",
+  "description": "",
+  "main": "",
+  "authors": [
+    "tuanlabophp <tuan.nguyenducanh@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/tuanlabophp/Shopping_Mall_02",
+  "dependencies": {
+    "AdminLTE": "adminlte#^2.3.11",
+    "bootstrap": "^3.3.7"
+  }
+}
