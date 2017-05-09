@@ -17,7 +17,7 @@ class CreateTechnicalsTable extends Migration
     {
         Schema::create('technicals', function (Blueprint $table) {
             $table->increments('id');
-            $table->increments('name');
+            $table->string('name');
             $table->timestamps();
         });
     }
