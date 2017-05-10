@@ -1,11 +1,10 @@
 <?php
-namespace Database\Migrations;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrderDetailsTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +13,12 @@ class CreateOrderDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('order_details', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('order_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->integer('product_id')->unsigned();
-            $table->decimal('price', 10, 0)->unsigned();
-            $table->integer('quantity')->unsigned();
+            $table->integer('parent_id')->unsigned();
+            $table->string('content');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateOrderDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_details');
+        Schema::dropIfExists('comments');
     }
 }

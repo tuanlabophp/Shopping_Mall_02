@@ -1,11 +1,10 @@
 <?php
-namespace Database\Migrations;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDeliversTable extends Migration
+class CreateProductTechnicalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +13,10 @@ class CreateDeliversTable extends Migration
      */
     public function up()
     {
-        Schema::create('delivers', function (Blueprint $table) {
+        Schema::create('product_technicals', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->integer('status')->unsigned();
+            $table->integer('product_id')->unsigned();
+            $table->integer('technical_id')->unsigned();
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateDeliversTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('delivers');
+        Schema::dropIfExists('product_technicals');
     }
 }

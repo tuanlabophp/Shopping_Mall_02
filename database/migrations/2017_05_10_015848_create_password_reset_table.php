@@ -1,11 +1,10 @@
 <?php
-namespace Database\Migrations;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePasswordResetsTable extends Migration
+class CreatePasswordResetTable extends Migration
 {
     /**
      * Run the migrations.

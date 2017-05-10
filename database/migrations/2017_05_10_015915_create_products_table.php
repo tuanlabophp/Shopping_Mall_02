@@ -1,5 +1,4 @@
 <?php
-namespace Database\Migrations;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -21,18 +20,11 @@ class CreateProductsTable extends Migration
             $table->decimal('price', 10, 0);
             $table->float('sale_percent')->unsigned();
             $table->float('display_size')->unsigned();
-            $table->string('display_detail');
-            $table->string('feature_image');
-            $table->string('image_list');
+            $table->string('profile');
+            $table->string('profile_full')->nullable();
             $table->integer('quantity')->unsigned()->default(0);
-            $table->string('guarantee')->nullable();
-            $table->string('os_cpu')->nullable();
-            $table->string('memory')->nullable();
-            $table->string('design');
-            $table->string('camera')->nullable();
-            $table->string('connect');
-            $table->string('battery');
             $table->text('description')->nullable();
+            $table->integer('status')->unsigned()->default(0);
             $table->timestamps();
         });
     }

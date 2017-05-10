@@ -1,11 +1,10 @@
 <?php
-namespace Database\Migrations;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateShippersTable extends Migration
+class CreateOrderDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +13,12 @@ class CreateShippersTable extends Migration
      */
     public function up()
     {
-        Schema::create('shippers', function (Blueprint $table) {
+        Schema::create('order_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('company');
-            $table->integer('status')->unsigned()->default(0);
+            $table->integer('order_id')->unsigned();
+            $table->integer('product_id')->unsigned();
+            $table->decimal('price', 10, 0)->unsigned();
+            $table->integer('quantity')->unsigned();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateShippersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shippers');
+        Schema::dropIfExists('order_details');
     }
 }

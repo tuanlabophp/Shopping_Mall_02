@@ -1,11 +1,10 @@
 <?php
-namespace Database\Migrations;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCommentsTable extends Migration
+class CreateShippersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +13,11 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('shippers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->integer('product_id')->unsigned();
-            $table->integer('parent_id')->unsigned();
-            $table->string('content');
+            $table->string('name');
+            $table->string('company');
+            $table->integer('status')->unsigned()->default(0);
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('shippers');
     }
 }

@@ -1,11 +1,10 @@
 <?php
-namespace Database\Migrations;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Foreignkey extends Migration
+class CreateForeignkey extends Migration
 {
     /**
      * Run the migrations.
@@ -44,6 +43,9 @@ class Foreignkey extends Migration
         Schema::table('product_technicals', function (Blueprint $table) {
             $table->foreign('product_id')->references('id')->on('products');
             $table->foreign('technical_id')->references('id')->on('technicals');
+        });
+        Schema::table('product_images', function (Blueprint $table) {
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 

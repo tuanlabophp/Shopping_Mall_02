@@ -1,24 +1,24 @@
 <?php
-namespace Database\Migrations;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductTechnicalsTable extends Migration
+class CreateProductImagesTable extends Migration
 {
     /**
      * Run the migrations.
-     *product_technicals
+     *
      * @return void
      */
     public function up()
     {
-        Schema::create('product_technicals', function (Blueprint $table) {
+        Schema::create('product_images', function (Blueprint $table) {
             $table->increments('id');
-            $table->increments('product_id');
-            $table->increments('technical_id');
-            $table->timestamps();
+            $table->integer('product_id')->unsigned();
+            $table->string('path_origin');
+            $table->string('path_thumb');
+            $table->integer('is_main');
         });
     }
 
@@ -29,6 +29,6 @@ class CreateProductTechnicalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_technicals');
+        Schema::dropIfExists('product_images');
     }
 }
