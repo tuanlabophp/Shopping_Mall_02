@@ -18,7 +18,7 @@ class LoginController extends Controller
                 return redirect('admin');
             }
         } else {
-            return view('admin.login');
+            return view('auth.login');
         }
     }
 
@@ -27,7 +27,7 @@ class LoginController extends Controller
         if (Auth::check()) {
             return redirect('/');
         } else {
-            return view('admin.login');
+            return view('auth.login');
         }
     }
     public function logout()
@@ -35,7 +35,7 @@ class LoginController extends Controller
         if (Auth::check()) {
             if (Auth::user()->rule != 0) {
                 Auth::logout();
-                return view('admin.login');
+                return view('auth.login');
             } else {
                 Auth::logout();
                 return redirect('/');

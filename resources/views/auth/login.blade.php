@@ -1,68 +1,71 @@
-@extends('layouts.app')
+@extends("sites.master")
+@section("title")
 
+    {{ trans('view.users_login') }}
+
+@endsection
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+    <!-- Main content -->
+    <main id="authentication" class="inner-bottom-md">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-6">
+                    <section class="section sign-in inner-right-xs">
+                        <h2 class="bordered">{{ trans('sign_in') }}</h2>
+                        <p>{{ trans('hello_wellcome_to_your_account') }}</p>
+                        {!! Form::open(['url' => asset('login'), 'method' => 'post', 'enctype' => 'multipart/form-data', 'class' => 'login-form cf-style-1']) !!}
+                            <div class="field-row">
+                                <label>{{ trans('email') }}</label>
+                                {!!Form::email('email', $value = '', ['class' => 'le-input'])!!}
                             </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
+                            <div class="field-row">
+                                <label>{{ trans('password') }}</label>
+                                {!!Form::password('password', ['class' => 'le-input'])!!}
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                            <div class="field-row clearfix">
+                                <span class="pull-left">
+                                    <label class="content-color">
+                                        {!!Form::checkbox('remmember', $value = '', ['class' => 'le-checbox auto-width inline'])!!}
+                                        <span class="bold">{{ trans('remmember_me') }}</span>
                                     </label>
-                                </div>
+                                </span>
+                                <span class="pull-right">
+                                    <a href="#" class="content-color bold">{{ trans('forgot_password') }}</a>
+                                </span>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
+                            {!!Form::submit(trans('sign_in'), ['class' => 'le-button huge'])!!}
+                        {!!Form::close()!!}
+                    </section>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+                <div class="col-md-6">
+                    <section class="section register inner-left-xs">
+                        <h2 class="bordered">{{ trans('create_new_account') }}</h2>
+                        <p>{{ trans('create_your_own_mobile_phone_store_account') }}</p>
+
+                        {!! Form::open(['url' => asset('register'), 'method' => 'post', 'enctype' => 'multipart/form-data', 'class' => 'register-form cf-style-1']) !!}
+                            <div class="field-row">
+                                <label>{{ trans('email') }}</label>
+                                {!!Form::email('email', $value = '', ['class' => 'le-input'])!!}
+                            </div>
+                            <div class="field-row">
+                                <label>{{ trans('password') }}</label>
+                                {!!Form::password('password', ['class' => 'le-input'])!!}
+                            </div>
+                            <div class="field-row">
+                                <label>{{ trans('re_password') }}</label>
+                                {!!Form::password('password', ['class' => 'le-input'])!!}
+                            </div>
+                            
+                            {!!Form::submit(trans('sign_up'), ['class' => 'le-button huge'])!!}
+                        {!!Form::close()!!}
+                    </section><!-- /.register -->
+
+                </div><!-- /.col -->
+
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </main>
+
 @endsection

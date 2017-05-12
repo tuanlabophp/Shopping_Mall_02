@@ -9,8 +9,8 @@
         <title>{{ trans('site.app_name') }} | @yield('title') </title>
 
         {{ Html::style('bower/bootstrap/dist/css/bootstrap.min.css') }}
-        {{ Html::style('client_template/assets/css/main.css') }}
-        {{ Html::style('client_template/assets/css/dark-green.css') }}
+        {{ Html::style('sites_custom/css/main.css') }}
+        {{ Html::style('sites_custom/css/dark-green.css') }}
         {{ Html::style('bower/owl.carousel/dist/assets/css/owl.carousel.css') }}
         {{ Html::style('bower/animate.css/animate.min.css') }}
         {{ Html::style('bower/components-font-awesome/css/font-awesome.min.css') }}
@@ -25,9 +25,8 @@
             </div>
             @include('sites._sections.footer')
         </div>
-        {{ Html::script('client_template/assets/js/jquery.customSelect.min.js') }}
+        {{ Html::script('sites_custom/js/jquery.customSelect.min.js') }}
         {{ Html::script('bower/jquery/dist/jquery.min.js') }}
-        {{ Html::script('client_template/assets/js/jquery.customSelect.min.js') }}
         {{ Html::script('bower/jquery-migrate/js/jquery-migrate.js') }}
         {{ Html::script('bower/owl.carousel/dist/owl.carousel.min.js') }}
         {{ Html::script('bower/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js') }}

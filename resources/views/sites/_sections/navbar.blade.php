@@ -4,8 +4,12 @@
         <div class="col-xs-12 col-sm-6 no-margin">
             <ul>
                 <li><a href="#">{{ trans('sites.home') }}</a></li>
-                <li><a href="#">{{ trans('sites.register') }}</a></li>
-                <li><a href="#">{{ trans('sites.login') }}</a></li>
+                @if(Auth::check())
+                    <li><a href="#">{{ Auth::user()->f_name }}</a></li>
+                    <li><a href="{{ asset('logout') }}">{{ trans('sites.logout') }}</a></li>
+                @else         
+                    <li><a href="{{ asset('login') }}">{{ trans('sites.register') }} / {{ trans('sites.login') }} </a></li>
+                @endif
             </ul>
         </div><!-- /.col -->
     </div><!-- /.container -->
@@ -24,12 +28,12 @@
             <div class="contact-row">
                 <div class="phone inline">
                     <a href="tel:0123456789">
-                        <i class="fa fa-phone"></i> {{ trans('view.phone') }}
+                        <i class="fa fa-phone"></i> {{ trans('sites.phone') }}
                     </a>
                 </div>
                 <div class="contact inline">
                     <a href="mailto:contact@oursupport.com">
-                        <i class="fa fa-envelope"></i> {{ trans('view.contact') }}<span class="le-color">{{ trans('view.support') }}</span>
+                        <i class="fa fa-envelope"></i> {{ trans('sites.contact_email') }}<span class="le-color">{{ trans('sites.support') }}</span>
                     </a>
                 </div>
             </div><!-- /.contact-row -->
@@ -37,10 +41,10 @@
             <div class="search-area">
                 {!!Form::open(['url' => asset('admin/product'), 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
                     <div class="control-group">
-                        {!!Form::text('name', $value = '', $attributes = ['class' => 'search-field', 'placeholder' => trans('view.search_for_item')])!!}
-                        {!!Form::submit(trans('view.search'))!!}   
+                        {!!Form::text('name', $value = '', $attributes = ['class' => 'search-field', 'placeholder' => trans('sites.search_for_item')])!!}
+                        {!!Form::submit('Search', $attributes = ['class' => 'search-button'])!!}
                     </div>
-                {!!Form::close()!!}
+                {!!Form::close() !!}
             </div><!-- /.search-area -->
         </div><!-- /.top-search-holder -->
 

@@ -64,7 +64,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">{{ trans('view.profile') }}</a>
+                                        <a href="{{ asset('admin/profile') }}" class="btn btn-default btn-flat">{{ trans('view.profile') }}</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="{{ asset('logout') }}" class="btn btn-default btn-flat">{{ trans('view.logout') }}</a>
@@ -97,7 +97,7 @@
                 <ul class="sidebar-menu">
                     <li class="header">{{ trans('view.main_navigation') }}</li>
                     <li class="treeview">
-                        <a href="#">
+                        <a href="{{ asset('admin/category') }}">
                             <i class="fa fa-codiepie"></i> <span>{{ trans('view.category') }}</span>
                         </a>
                     </li>
@@ -106,30 +106,24 @@
                             <i class="fa fa-product-hunt"></i>
                             <span>{{ trans('view.product') }}</span>
                         </a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{ asset('admin/product/create') }}"><i class="fa fa-circle-o"></i> New</a></li>
-                            <li><a href="../charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-                            <li><a href="../charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-                            <li><a href="../charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
-                        </ul>
                     </li>
                     <li class="treeview">
-                        <a href="#">
+                        <a href="{{ asset('admin/order') }}">
                             <i class="fa fa-opera"></i> <span>{{ trans('view.order') }}</span>
                         </a>
                     </li>
                     <li class="treeview">
-                        <a href="#">
+                        <a href="{{ asset('admin/comment') }}">
                             <i class="fa fa-comments"></i> <span>{{ trans('view.comment') }}</span>
                         </a>
                     </li>
                     <li class="treeview">
-                        <a href="#">
+                        <a href="{{ asset('admin/rate') }}">
                             <i class="fa fa-star-half-o"></i> <span>{{ trans('view.rate') }}</span>
                         </a>
                     </li>
                     <li class="treeview">
-                        <a href="#">
+                        <a href="{{ asset('admin/user') }}">
                             <i class="fa fa-user-secret"></i> <span>{{ trans('view.user') }}</span>
                         </a>
                     </li>

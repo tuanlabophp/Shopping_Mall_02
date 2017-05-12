@@ -1,6 +1,6 @@
-@extends('admin.master')
+@extends('sites.master')
 @section('title')
-	{{ trans('view.admin') }}
+    {{ trans('view.app_name') }}
 @endsection
 @section('content')
 
