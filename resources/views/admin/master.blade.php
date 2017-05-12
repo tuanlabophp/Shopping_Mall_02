@@ -52,26 +52,22 @@
                         </li>
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                              <img src="" class="user-image" alt="User Image">
-                              <span class="hidden-xs">Alexander Pierce</span>
+                              <img src="{{ asset('images/'.Auth::user()->avatar) }}" class="user-image" alt="User Image">
+                              <span class="hidden-xs">{{ Auth::user()->l_name }}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                    <img src="" class="img-circle" alt="User Image">
-
-                                    <p>
-                                        Alexander Pierce - {{ trans('view.web_develop') }}
-                                        <small></small>
-                                    </p>
+                                    <img src="{{ asset('images/'.Auth::user()->avatar) }}" class="img-circle" alt="User Image">
+                                    <p>{{ Auth::user()->f_name }} {{ Auth::user()->l_name }}</p>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">{{ trans('view.profile') }}</a>
+                                        <a href="{{ route('admin.profile') }}" class="btn btn-default btn-flat">{{ trans('view.profile') }}</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">{{ trans('view.logout') }}</a>
+                                        <a href="{{ route('logout') }}" class="btn btn-default btn-flat">{{ trans('view.logout') }}</a>
                                     </div>
                                 </li>
                             </ul>
@@ -91,44 +87,43 @@
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="" class="img-circle" alt="User Image">
+                        <img src="{{ asset('images/'.Auth::user()->avatar) }}" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
-                        <p>Alexander Pierce</p>
-                        <a href="#"><i class="fa fa-circle text-success"></i> {{ trans('view.online') }}</a>
+                        <p>{{ Auth::user()->l_name }}</p>
                     </div>
                 </div>
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
                     <li class="header">{{ trans('view.main_navigation') }}</li>
                     <li class="treeview">
-                        <a href="#">
+                        <a href="{{ route('admin.category.index') }}">
                             <i class="fa fa-codiepie"></i> <span>{{ trans('view.category') }}</span>
                         </a>
                     </li>
                     <li class="treeview">
-                        <a href="#">
+                        <a href="{{ route('admin.product.index') }}">
                             <i class="fa fa-product-hunt"></i>
                             <span>{{ trans('view.product') }}</span>
                         </a>
                     </li>
                     <li class="treeview">
-                        <a href="#">
+                        <a href="{{ route('admin.order.index') }}">
                             <i class="fa fa-opera"></i> <span>{{ trans('view.order') }}</span>
                         </a>
                     </li>
                     <li class="treeview">
-                        <a href="#">
+                        <a href="{{ route('admin.comment.index') }}">
                             <i class="fa fa-comments"></i> <span>{{ trans('view.comment') }}</span>
                         </a>
                     </li>
                     <li class="treeview">
-                        <a href="#">
+                        <a href="{{ route('admin.rate') }}">
                             <i class="fa fa-star-half-o"></i> <span>{{ trans('view.rate') }}</span>
                         </a>
                     </li>
                     <li class="treeview">
-                        <a href="#">
+                        <a href="{{ route('admin.user.index') }}">
                             <i class="fa fa-user-secret"></i> <span>{{ trans('view.user') }}</span>
                         </a>
                     </li>
