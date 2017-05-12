@@ -2,7 +2,7 @@
 @section("title")
 
     {{ trans('view.add_product') }}
-
+@endsection
 @section('content')
 <section class="content-header">
     <h1>{{ trans('view.categories_management') }}</h1>

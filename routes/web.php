@@ -11,6 +11,12 @@
 |
 */
 
+Route::get('admin', 'AdminController@index')->middleware('admin');
 Route::get('/', function () {
-    return view('welcome');
+    return view('sites.master');
 });
+//login logout
+Route::post('login', 'LoginController@login');
+Route::get('login', 'LoginController@checkLogin');
+Route::get('logout', 'LoginController@logout');
+Route::resource('admin/product', 'ProductController');

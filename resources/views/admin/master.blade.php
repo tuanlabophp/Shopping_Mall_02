@@ -52,18 +52,14 @@
                         </li>
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                              <img src="" class="user-image" alt="User Image">
-                              <span class="hidden-xs">Alexander Pierce</span>
+                              <img src="{{ asset('images/'.Auth::user()->avatar) }}" class="user-image" alt="User Image">
+                              <span class="hidden-xs">{{ Auth::user()->l_name }}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                    <img src="" class="img-circle" alt="User Image">
-
-                                    <p>
-                                        Alexander Pierce - {{ trans('view.web_develop') }}
-                                        <small></small>
-                                    </p>
+                                    <img src="{{ asset('images/'.Auth::user()->avatar) }}" class="img-circle" alt="User Image">
+                                    <p>{{ Auth::user()->f_name }} {{ Auth::user()->l_name }}</p>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
@@ -71,7 +67,7 @@
                                         <a href="#" class="btn btn-default btn-flat">{{ trans('view.profile') }}</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">{{ trans('view.logout') }}</a>
+                                        <a href="{{ asset('logout') }}" class="btn btn-default btn-flat">{{ trans('view.logout') }}</a>
                                     </div>
                                 </li>
                             </ul>
@@ -91,11 +87,10 @@
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="" class="img-circle" alt="User Image">
+                        <img src="{{ asset('images/'.Auth::user()->avatar) }}" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
-                        <p>Alexander Pierce</p>
-                        <a href="#"><i class="fa fa-circle text-success"></i> {{ trans('view.online') }}</a>
+                        <p>{{ Auth::user()->l_name }}</p>
                     </div>
                 </div>
                 <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -107,10 +102,16 @@
                         </a>
                     </li>
                     <li class="treeview">
-                        <a href="#">
+                        <a href="{{ asset('admin/product') }}">
                             <i class="fa fa-product-hunt"></i>
                             <span>{{ trans('view.product') }}</span>
                         </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{ asset('admin/product/create') }}"><i class="fa fa-circle-o"></i> New</a></li>
+                            <li><a href="../charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
+                            <li><a href="../charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
+                            <li><a href="../charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+                        </ul>
                     </li>
                     <li class="treeview">
                         <a href="#">

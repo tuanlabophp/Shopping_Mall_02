@@ -37,7 +37,7 @@
             <div class="search-area">
                 {!!Form::open(['url' => asset('admin/product'), 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
                     <div class="control-group">
-                        {!!Form::text('name', $value = '', $attributes(['class' => 'search-field', 'placeholder' => trans('view.search_for_item')]))!!}
+                        {!!Form::text('name', $value = '', $attributes = ['class' => 'search-field', 'placeholder' => trans('view.search_for_item')])!!}
                         {!!Form::submit(trans('view.search'))!!}   
                     </div>
                 {!!Form::close()!!}

@@ -12,9 +12,9 @@
         {{ Html::style('client_template/assets/css/main.css') }}
         {{ Html::style('client_template/assets/css/dark-green.css') }}
         {{ Html::style('bower/owl.carousel/dist/assets/css/owl.carousel.css') }}
-        {{ Html::style('bower/animate.css/animate.min.css') ) }}
+        {{ Html::style('bower/animate.css/animate.min.css') }}
         {{ Html::style('bower/components-font-awesome/css/font-awesome.min.css') }}
-        {{ Html::style( 'http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' ) }}
+        {{ Html::style('http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800') }}
         
     </head>
     <body>
@@ -26,7 +26,7 @@
             @include('sites._sections.footer')
         </div>
         {{ Html::script('client_template/assets/js/jquery.customSelect.min.js') }}
-        {{ Html::script('bower/jquery/dist/jquery.min.js') ) }}
+        {{ Html::script('bower/jquery/dist/jquery.min.js') }}
         {{ Html::script('client_template/assets/js/jquery.customSelect.min.js') }}
         {{ Html::script('bower/jquery-migrate/js/jquery-migrate.js') }}
         {{ Html::script('bower/owl.carousel/dist/owl.carousel.min.js') }}
