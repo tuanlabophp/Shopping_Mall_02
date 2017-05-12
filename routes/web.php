@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/admin/order', 'OrderController@index');
+Route::get('/index', function () {
+    return view('sites.master');
+});
+Route::get('/login', function () {
+    return view('auth.login');
+});
+// Route::post('/login', function () {
+//     return view('auth.login');
+// });
+Route::get('/admin/user', 'UserController@index');
+Route::resource('user', 'UserController');

@@ -13,6 +13,7 @@ return [
     'topratedproducts' => 'Top Rated Products',
     'subscribe' => 'Subscribe',
     'contact' => 'Feel Free To Contact Us Via Phone,Email Or Just Send Us Mail',
+    'phone' => '+841690000000',
     'address' => 'Tran Khat Chan Street, Mobile Phone Store(+841690000000)',
     'getintouch' => 'Get In Touch',
     'finditfast' => 'Find It Fast',
