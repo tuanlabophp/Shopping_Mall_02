@@ -3,15 +3,16 @@
 
     {{ trans('view.add_product') }}
 
+@endsection
 @section('content')
 <section class="content-header">
     <h1>{{ trans('view.categories_management') }}</h1>
     
-    {!!Form::open(['url' => asset('admin/product'), 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
+    {!!Form::open(['route' => 'admin.product.store', 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
     <table>
         <tr>
             <td>{!!Form::label('name', trans('view.Name'))!!}</td>
-            <td>{!!Form::text('name', $value = '')!!}</td>
+            <td>{!!Form::text('name', $value = '', $attributes = ['placeholder' => trans('view.name')])!!}</td>
         </tr>
         <tr>
             <td>{!!Form::label('category', trans('view.category'))!!}</td>
