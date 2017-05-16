@@ -12,7 +12,7 @@
                 <div class="box">
                     <div class="box-header"><h3 class="box-title"></h3></div>
                     <div class="box-body">
-                        <a href="#" class="btn btn-primary">{{ trans('view.add_user') }}</a>
+                        <a href="{{ asset('admin/user/create')}}" class="btn btn-primary">{{ trans('view.add_user') }}</a>
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
