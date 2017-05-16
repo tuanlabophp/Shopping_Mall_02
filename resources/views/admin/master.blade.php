@@ -10,6 +10,7 @@
     {{ Html::style('https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css') }}
     {{ Html::style('bower/AdminLTE/dist/css/AdminLTE.min.css') }}
     {{ Html::style('bower/AdminLTE/dist/css/skins/_all-skins.min.css') }}
+    {{ Html::style('css/admin.css') }}
 
     @yield('style')
 
@@ -150,6 +151,7 @@
     {{ Html::script('bower/jquery/dist/jquery.js') }}
     {{ Html::script('bower/bootstrap/dist/js/bootstrap.min.js') }}
     {{ Html::script('bower/AdminLTE/dist/js/app.min.js') }}
+    {{ Html::script('js/admin.js') }}
 
     @yield('scrip')
 

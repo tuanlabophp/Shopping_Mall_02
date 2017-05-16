@@ -13,17 +13,9 @@ class Product extends Model
         'price',
         'sale_percent',
         'display_size',
-        'display_detail',
-        'feature_image',
-        'image_list',
         'quantity',
-        'guarantee',
-        'os_cpu',
-        'memory',
-        'design',
-        'camera',
-        'connect',
-        'battery',
+        'profile',
+        'profile_full',
         'description',
     ];
 
@@ -44,7 +36,7 @@ class Product extends Model
 
     public function technicals()
     {
-        return $this->belongsToMany(Technical::class);
+        return $this->belongsToMany(Technical::class, 'product_technicals');
     }
 
     public function productTechnicals()
