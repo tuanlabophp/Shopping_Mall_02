@@ -8,7 +8,8 @@
                     <li><a href="#">{{ Auth::user()->f_name }}</a></li>
                     <li><a href="{{ asset('logout') }}">{{ trans('sites.logout') }}</a></li>
                 @else         
-                    <li><a href="{{ asset('login') }}">{{ trans('sites.register') }} / {{ trans('sites.login') }} </a></li>
+                    <li><a href="{{ asset('login') }}"> {{ trans('sites.login') }} </a></li>
+                    <li><a href="{{ asset('register') }}">{{ trans('sites.register') }}</a></li>
                 @endif
             </ul>
         </div><!-- /.col -->

@@ -21,7 +21,8 @@ class ProductController extends Controller
         ProductImage $productImage,
         ProductTechnical $productTechnical,
         Category $category,
-        Technical $technical) {
+        Technical $technical
+    ) {
         $this->middleware('admin');
         $this->product = $product;
         $this->productImage = $productImage;
@@ -37,7 +38,6 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // $products = $this->product->all();
         $products = $this->product->with('productImages')->paginate(5);
         return view('admin.product.index')->with('products', $products);
     }
@@ -191,10 +191,8 @@ class ProductController extends Controller
             }
             
             if ($request->hasFile('image_list')) {
-                // return 'thang';
                 if ($image_list = $product->productImages->where('is_main', '!=', 1)) {
-
-                    foreach ($image_list as  $value) {
+                    foreach ($image_list as $value) {
                         Helpers::deleteFile($value['path_origin'], config('setup.product_image_path'));
                     }
                     $this->productImage->where('is_main', '!=', 1)->where('product_id', $product->id)->delete();
