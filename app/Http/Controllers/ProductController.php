@@ -37,7 +37,6 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // $products = $this->product->all();
         $products = $this->product->with('productImages')->paginate(5);
         return view('admin.product.index')->with('products', $products);
     }
@@ -191,7 +190,6 @@ class ProductController extends Controller
             }
             
             if ($request->hasFile('image_list')) {
-                // return 'thang';
                 if ($image_list = $product->productImages->where('is_main', '!=', 1)) {
 
                     foreach ($image_list as  $value) {
