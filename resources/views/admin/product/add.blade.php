@@ -11,10 +11,10 @@
 <section class="content-header">
     <h1>{{ trans('view.categories_management') }}</h1>
     <div class="box box-primary">
-        @if(count($errors))      
+        @if (count($errors))      
             <div class="alert alert-danger">
                 <ul>
-                @foreach($errors->all() as $error)
+                @foreach ($errors->all() as $error)
                     {{ $error }}
                 @endforeach   
                 </ul>

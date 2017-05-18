@@ -7,18 +7,18 @@
 @section('content')
 <!-- Main content -->
 <section class="content">
-    <a href="{{ asset('admin/product/create') }}" class="btn btn-primary">{{ trans('view.product_create') }}</a>
+    <a href="{{ asset(config('setup.product_path') . '/create') }}" class="btn btn-primary">{{ trans('view.product_create') }}</a>
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-body">
 
-                    @if(session()->has('success'))
+                    @if (session()->has('success'))
                         <div class="alert alert-success">
                             {{ session()->get('success') }}
                         </div>
                     @endif
-                    @if(session()->has('fail'))
+                    @if (session()->has('fail'))
                         <div class="alert alert-danger">
                         {{ session()->get('fail') }}
                         </div>
@@ -34,12 +34,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($products as $product)
+                        @foreach ($products as $product)
                             <tr>
                                 <td>{{ $product['id'] }}</td>
                                 <td>
-                                @foreach($product->productImages as $image)
-                                    @if($image['is_main'] == 1)
+                                @foreach ($product->productImages as $image)
+                                    @if ($image['is_main'] == 1)
                                         <img src="{{ asset(config('setup.product_image_path') . '/' . $image['path_origin']) }}" alt="" width="30px">
                                         @break;
                                     @endif
