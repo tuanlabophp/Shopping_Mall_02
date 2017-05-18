@@ -7,11 +7,23 @@
 @section('content')
 <!-- Main content -->
 <section class="content">
+    <a href="{{ asset('admin/product/create') }}" class="btn btn-primary">{{ trans('view.product_create') }}</a>
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
-                <div class="box-header"><h3 class="box-title"></h3></div>
                 <div class="box-body">
+
+                    @if(session()->has('success'))
+                        <div class="alert alert-success">
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif
+                    @if(session()->has('fail'))
+                        <div class="alert alert-danger">
+                        {{ session()->get('fail') }}
+                        </div>
+                    @endif
+
                     <table id="example2" class="table table-bordered table-hover">
                         <thead>
                             <tr>
@@ -22,26 +34,28 @@
                             </tr>
                         </thead>
                         <tbody>
+                        @foreach($products as $product)
                             <tr>
-                                <td>Trident</td>
-                                <td>Internet Explorer 4.0</td>
-                                <td>Internet Explorer 4.0</td>
+                                <td>{{ $product['id'] }}</td>
                                 <td>
-                                    <button class="btn btn-warning"><a href="">Edit</a></button>
-                                    <button class="btn btn-danger">Delete</button>
-                                    <button class="btn btn-primary">Add</button>
+                                @foreach($product->productImages as $image)
+                                    @if($image['is_main'] == 1)
+                                        <img src="{{ asset(config('setup.product_image_path') . '/' . $image['path_origin']) }}" alt="" width="30px">
+                                        @break;
+                                    @endif
+                                @endforeach
+                                <td>{{ $product['name'] }}</td>
+                                <td>
+                                    <a class= 'btn btn-warning' href="{{ asset('admin/product' . '/' . $product['id'] . '/edit') }} " >{{ trans('view.edit') }}</a>
+                                    {!! Form::open(['route' => ['admin.product.destroy', $product['id']], 'method' => 'delete', 'id' => 'form-delete']) !!}
+                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                    {!! Form::close() !!}
                                 </td>
                             </tr>
-
+                        @endforeach
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Rendering engine</th>
-                                <th>Browser</th>
-                                <th>Platform(s)</th>
-                            </tr>
-                        </tfoot>
                     </table>
+                    {{ $products->links() }}
                 </div>
                 <!-- /.box-body -->
             </div>

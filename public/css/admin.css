@@ -1,0 +1,24 @@
+.label {
+    display: inline-block;
+    width: 200px;
+    color: black;
+    font-size: 15px;
+    text-align: left;
+}
+
+.form-control {
+    border-radius: 5px;
+    box-shadow: none;
+    border-color: #7ed4bb;
+    display: inline-block;
+    width: 198px;
+}
+.head {
+    background-color: blue;
+}
+.list-tech {
+    float: none;
+}
+#form-delete {
+    display: inline;
+}
