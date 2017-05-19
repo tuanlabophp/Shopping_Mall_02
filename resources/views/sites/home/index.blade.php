@@ -3,5 +3,5 @@
     {{ trans('view.app_name') }}
 @endsection
 @section('content')
-
+    
 @endsection

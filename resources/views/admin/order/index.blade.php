@@ -12,11 +12,23 @@
                 <div class="box">
                     <div class="box-header"><h3 class="box-title"></h3></div>
                     <div class="box-body">
-                        <a href="#" class="btn btn-primary">{{ trans('view.add_order') }}</a>
+                        <a href="{{ asset('admin/order/create')}}" class="btn btn-primary">{{ trans('view.add_order') }}</a>
+
+                        @if (session()->has('success'))
+                            <div class="alert alert-success">
+                                {{ session()->get('success') }}
+                            </div>
+                        @endif
+                        @if (session()->has('fail'))
+                            <div class="alert alert-danger">
+                            {{ session()->get('fail') }}
+                        </div>
+                        @endif
+                        
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>{{ trans('view.name') }}</th>
+                                    <th>{{ trans('view.username') }}</th>
                                     <th>{{ trans('view.email') }}</th>
                                     <th>{{ trans('view.address') }}</th>
                                     <th>{{ trans('view.phone') }}</th>
@@ -25,6 +37,8 @@
                                     <th>{{ trans('view.shipper_id') }}</th>
                                     <th>{{ trans('view.deliver_id') }}</th>
                                     <th>{{ trans('view.note') }}</th>
+                                    <th>{{ trans('view.created_at') }}</th>
+                                    <th>{{ trans('view.updated_at') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,9 +53,13 @@
                                         <td>{{ $orders->shipper_id }}</td>
                                         <td>{{ $orders->deliver_id }}</td>
                                         <td>{{ $orders->note }}</td>
+                                        <td>{{ $orders->created_at }}</td>
+                                        <td>{{ $orders->updated_at }}</td>
                                         <td>
-                                            <button class="btn btn-warning"><a href="">Edit</a></button>
-                                            <button class="btn btn-danger">Delete</button>
+                                            <button class="btn btn-warning"><a href="{{ asset('admin/order' . '/' . $orders['id'] . '/edit') }}">{{ trans('view.edit') }}</a></button>
+                                            {!! Form::open(['route' => ['admin.order.destroy', $orders['id']], 'method' => 'delete', 'id' => 'form-delete']) !!}
+                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                    {!! Form::close() !!}
                                         </td>
                                     </tr>
                                     @endforeach

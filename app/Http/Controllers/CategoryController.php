@@ -96,7 +96,7 @@ class CategoryController extends Controller
             session()->flash('success', trans('view.delete_category_seccess'));
         } else {
             session()->flash('fail', trans('view.sorry_something_went_wrong'));
-        }          
+        }
         
         return redirect('admin/category');
     }

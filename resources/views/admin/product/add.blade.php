@@ -1,7 +1,7 @@
 @extends("admin.master")
 @section("title")
 
-{{ trans('view.add_product') }}
+    {{ trans('view.add_product') }}
 
 @endsection
 @section('scrip')
