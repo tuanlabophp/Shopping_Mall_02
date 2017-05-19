@@ -3,10 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Admin\OrderRequest;
 use App\Models\Order;
+use App\Models\Shipper;
+use App\Models\Deliver;
+use App\Models\User;
+use App\Helpers\Helpers;
+use Storage;
+use Session;
+use DB;
 
 class OrderController extends Controller
 {
+    public function __construct(
+        Order $order,
+        Shipper $shipper,
+        Deliver $deliver
+    ) {
+        $this->middleware('admin');
+        $this->order = $order;
+        $this->shipper = $shipper;
+        $this->deliver = $deliver;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +32,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $order = Order::paginate(5);
+        $order = $this->order->paginate(5);
         return view('admin.order.index', ['order' => $order]);
     }
 
@@ -25,7 +43,15 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $order = $this->order;
+        $shipper = $this->shipper->all();
+        $deliver = $this->deliver->all();
+        // $user = $this->user->all();
+        return view('admin.order.add', [
+                'order' => $order,
+                'shipper' => $shipper,
+                'deliver' => $deliver,
+            ]);
     }
 
     /**
@@ -34,9 +60,21 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OrderRequest $request)
     {
-        //
+        $order = $this->order;
+        DB::beginTransaction();
+        try {
+            $order->fill($request->all());
+            if ($order->save()) {
+                DB::commit();
+                $request->session()->flash('success', trans('view.add_order_success'));
+            }
+        } catch (Exception $e) {
+            DB::rollback();
+            $request->session()->flash('fail', trans('view.add_order_fail'));
+        }
+        return redirect('admin/order');
     }
 
     /**
@@ -58,7 +96,11 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $order = $this->order->find($id);
+        if ($order) {
+            return view('admin.order.edit', ['order' => $order]);
+        }
+        return trans('message.not_found');
     }
 
     /**
@@ -68,9 +110,22 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(OrderRequest $request, $id)
     {
-        //
+        $order = $this->order->find($id);
+
+        DB::beginTransaction();
+        try {
+            $order->fill($request->all());
+            if ($order->save()) {
+                DB::commit();
+                $request->session()->flash('success', trans('view.add_order_success'));
+            }
+        } catch (Exception $e) {
+            DB::rollback();
+            $request->session()->flash('fail', trans('view.add_order_fail'));
+        }
+        return redirect('admin/order');
     }
 
     /**
@@ -81,6 +136,16 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $order = $this->order->find($id);
+        DB::beginTransaction();
+        try {
+            $order->delete();
+            DB::commit();
+            session()->flash('success', trans('admin.delete_order_success'));
+        } catch (Exception $e) {
+            DB::rollback();
+            session()->flash('fail', trans('admin.delete_order_fail'));
+        }
+        return redirect('admin/order');
     }
 }

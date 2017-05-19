@@ -12,7 +12,19 @@
                 <div class="box">
                     <div class="box-header"><h3 class="box-title"></h3></div>
                     <div class="box-body">
-                        <a href="#" class="btn btn-primary">{{ trans('view.add_user') }}</a>
+
+                        @if (session()->has('success'))
+                            <div class="alert alert-success">
+                                {{ session()->get('success') }}
+                            </div>
+                        @endif
+                        @if (session()->has('fail'))
+                            <div class="alert alert-danger">
+                            {{ session()->get('fail') }}
+                            </div>
+                        @endif
+                    
+                        <a href="{{ asset('admin/user/create')}}" class="btn btn-primary">{{ trans('view.add_user') }}</a>
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
@@ -31,12 +43,14 @@
                                         <td>{{ $users->f_name}} {{ $users->l_name }}</td>
                                         <td>{{ $users->email }}</td>
                                         <td>{{ $users->address }}</td>
-                                        <td><img src="{{ asset('images') . '/' . $users->avatar }}" alt="" height="50px"></td>
+                                        <td><img src="{{ asset(config('setup.user_avatar')) }}" alt="" width="30px"></td>
                                         <td>{{ $users->sex == 1 ? trans('view.male') : trans('view.female')}}</td>
-                                        <td>{{ $users->rule }}</td>
+                                        <td>{{ $users->rule == 1 ? trans('view.rule_admin') : trans('view.rule_user')}}</td>
                                         <td>
-                                            <button class="btn btn-warning"><a href="">Edit</a></button>
-                                            <button class="btn btn-danger">Delete</button>
+                                            <button class="btn btn-warning"><a href="{{ asset('admin/user' . '/' . $users['id'] . '/edit') }}">{{ trans('view.edit') }}</a></button>
+                                            {!! Form::open(['route' => ['admin.user.destroy', $users['id']], 'method' => 'delete', 'id' => 'form-delete']) !!}
+                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                    {!! Form::close() !!}
                                         </td>
                                     </tr>
                                     @endforeach
