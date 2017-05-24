@@ -3,13 +3,13 @@
     <div class="container">
         <div class="col-xs-12 col-sm-6 no-margin">
             <ul>
-                <li><a href="#">{{ trans('sites.home') }}</a></li>
+                <li><a href="{{ route('/') }}">{{ trans('sites.home') }}</a></li>
                 @if(Auth::check())
-                    <li><a href="#">{{ Auth::user()->f_name }}</a></li>
-                    <li><a href="{{ asset('logout') }}">{{ trans('sites.logout') }}</a></li>
+                <li><a href="#">{{ Auth::user()->f_name }}</a></li>
+                <li><a href="{{ route('logout') }}">{{ trans('sites.logout') }}</a></li>
                 @else         
-                    <li><a href="{{ asset('login') }}"> {{ trans('sites.login') }} </a></li>
-                    <li><a href="{{ asset('register') }}">{{ trans('sites.register') }}</a></li>
+                <li><a href="{{ route('login') }}">{{ trans('sites.login') }}</a></li>
+                <li><a href="{{ route('register') }}">{{ trans('sites.register') }}</a></li>
                 @endif
             </ul>
         </div><!-- /.col -->
@@ -18,7 +18,7 @@
 <!-- ============================================================= TOP NAVIGATION : END ============================================================= -->       <!-- ============================================================= HEADER ============================================================= -->
 <header>
     <div class="container no-padding">
-        
+
         <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
             <!-- ============================================================= LOGO ============================================================= -->
 
@@ -34,18 +34,18 @@
                 </div>
                 <div class="contact inline">
                     <a href="mailto:contact@oursupport.com">
-                        <i class="fa fa-envelope"></i> {{ trans('sites.contact_email') }}<span class="le-color">{{ trans('sites.support') }}</span>
+                        <i class="fa fa-envelope"></i> {{ trans('sites.contact_email') }}
                     </a>
                 </div>
             </div><!-- /.contact-row -->
             <!-- ============================================================= SEARCH AREA ============================================================= -->
             <div class="search-area">
-                {!!Form::open(['url' => asset('admin/product'), 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
-                    <div class="control-group">
-                        {!!Form::text('name', $value = '', $attributes = ['class' => 'search-field', 'placeholder' => trans('sites.search_for_item')])!!}
-                        {!!Form::submit('Search', $attributes = ['class' => 'search-button'])!!}
-                    </div>
-                {!!Form::close() !!}
+                {!! Form::open(['route' => 'search', 'method' => 'get']) !!}
+                <div class="control-group">
+                    {!!Form::text('name', $value = '', $attributes = ['class' => 'search-field', 'placeholder' => trans('sites.search_for_item')])!!}
+                    {!!Form::submit('Search', $attributes = ['class' => 'search-button'])!!}
+                </div>
+                {!! Form::close() !!}
             </div><!-- /.search-area -->
         </div><!-- /.top-search-holder -->
 
@@ -77,6 +77,7 @@
                         </a>
 
                         <ul class="dropdown-menu">
+                        <div class="cart">
                             <li>
                                 <div class="basket-item">
                                     <div class="row">
@@ -85,15 +86,19 @@
                                                 <img alt="" src="" />
                                             </div>
                                         </div>
+                                        
                                         <div class="col-xs-8 col-sm-8 no-margin">
-                                            <div class="title">{{ trans('view.blueberry') }}</div>
-                                            <div class="price">$270.00</div>
+
+                                            <div class="title">{{ trans('sites.blueberry') }}</div>
+                                            <div class="price"></div>
                                         </div>
+
                                     </div>
                                     <a class="close-btn" href="#"></a>
                                 </div>
                             </li>
-                            
+                        </div>
+                        {{-- @endforeach --}}
                             <li class="checkout">
                                 <div class="basket-item">
                                     <div class="row">

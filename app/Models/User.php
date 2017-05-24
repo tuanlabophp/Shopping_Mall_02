@@ -13,7 +13,6 @@ class User extends Authenticatable
         'l_name',
         'email',
         'address',
-        'phone',
         'avatar',
         'sex',
         'rule',

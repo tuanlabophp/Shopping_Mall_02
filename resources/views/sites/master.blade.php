@@ -10,8 +10,10 @@
 
         {{ Html::style('bower/bootstrap/dist/css/bootstrap.min.css') }}
         {{ Html::style('sites_custom/css/main.css') }}
+        {{ Html::style('sites_custom/css/filter.css') }}
+        {{ Html::style('sites_custom/css/js-image-slider.css') }}
         {{ Html::style('sites_custom/css/dark-green.css') }}
-        {{ Html::style('bower/owl.carousel/dist/assets/css/owl.carousel.css') }}
+        {{ Html::style('bower/owl.carousel/dist/assets/owl.carousel.css') }}
         {{ Html::style('bower/animate.css/animate.min.css') }}
         {{ Html::style('bower/components-font-awesome/css/font-awesome.min.css') }}
         {{ Html::style('http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800') }}
@@ -25,18 +27,28 @@
             </div>
             @include('sites._sections.footer')
         </div>
-        {{ Html::script('sites_custom/js/jquery.customSelect.min.js') }}
+
         {{ Html::script('bower/jquery/dist/jquery.min.js') }}
-        {{ Html::script('bower/jquery-migrate/js/jquery-migrate.js') }}
+        {{ Html::script('bower/bootstrap/dist/js/bootstrap.min.js') }}
+        {{ Html::script('bower/jquery-migrate/jquery-migrate.min.js') }}
+        {{ Html::script('sites_custom/js/js-image-slider.js') }}
+        {{ Html::script('sites_custom/js/owl.carousel.min.js') }}
+        {{ Html::script('sites_custom/js/jquery.customSelect.min.js') }}
         {{ Html::script('bower/owl.carousel/dist/owl.carousel.min.js') }}
         {{ Html::script('bower/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js') }}
-        {{ Html::script('bower/css_browser_selector/css_browser_selector.min.js') }}
-        {{ Html::script('bower/echojs/dist/js/echo.min.js') }}
-        {{ Html::script('bower/jquery.easing/js/jquery.easing-1.3.min.js') }}
-        {{ Html::script('bower/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.js') }}
+        {{ Html::script('bower/css-browser-selector/css_browser_selector.js') }}
+        {{ Html::script('bower/echojs/dist/echo.min.js') }}
+        {{ Html::script('bower/jquery.easing/js/jquery.easing.min.js') }}
+        {{ Html::script('bower/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js') }}
         {{ Html::script('bower/raty/lib/jquery.raty.js') }}
-        {{ Html::script('bower/jquery-prettyPhoto/js/jquery.prettyPhoto.min.js') }}
+        {{ Html::script('bower/jquery-prettyPhoto/js/jquery.prettyPhoto.js') }}
         {{ Html::script('bower/wow/dist/wow.min.js') }}
-        {{ Html::script('bower/scriptjs/dist/scripts.js') }}
+        {{ Html::script('bower/scriptjs/dist/script.js') }}
+        {{ Html::script('sites_custom/js/scripts.js') }}
+        {{ Html::script('sites_custom/js/gmap3.js') }}
+        {{ Html::script('sites_custom/js/respond.min.js') }}
+        {{ Html::script('sites_custom/js/cart.js') }}
+        {{ Html::script('sites_custom/js/search.js') }}
+        {{ Html::script('https://ws.sharethis.com/button/buttons.js') }}
     </body>
 </html>

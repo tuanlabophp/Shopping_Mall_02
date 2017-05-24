@@ -17,6 +17,7 @@ class Product extends Model
         'profile',
         'profile_full',
         'description',
+        'status',
     ];
 
     public function categories()
@@ -41,11 +42,26 @@ class Product extends Model
 
     public function productTechnicals()
     {
-        return $this->hasMany(ProductTechnical::class);
+        return $this->hasMany(ProductTechnical::class, 'product_technicals');
     }
 
     public function productImages()
     {
         return $this->hasMany(ProductImage::class);
+    }
+
+    public function scopeNew($query)
+    {
+        return $query->where('status', 1);
+    }
+
+    public function scopeFeature($query)
+    {
+        return $query->where('status', 2);
+    }
+
+    public function scopeTopSale($query)
+    {
+        return $query->where('sale_percent', '!=', 0);
     }
 }
