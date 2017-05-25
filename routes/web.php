@@ -12,9 +12,8 @@
 */
 
 Route::get('admin', 'AdminController@index')->middleware('admin');
-Route::get('/', function () {
-    return view('sites.home.index');
-});
+Route::get('/', 'Sites\HomeController@index')->name('/');
+Route::get('search', 'Sites\HomeController@search')->name('search');
 
 //login logout
 Route::post('login', 'LoginController@login')->name('login');
@@ -33,3 +32,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 });
 
 Route::get('admin/profile', 'AdminController@profile')->name('admin.profile');
+Route::get('cart', 'CartController@addToCart');
+Route::get('cart/delete', 'CartController@deleteCart');
