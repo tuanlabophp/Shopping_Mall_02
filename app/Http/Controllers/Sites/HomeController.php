@@ -56,6 +56,7 @@ class HomeController extends Controller
         if ($category = $request->category) {
             $products = $this->category
                 ->where('parent_id', $category)
+                ->orwhere('id', $category)
                 ->get()
                 ->map(function ($subCategory) {
                     $subCategory->products = $this->product
@@ -146,5 +147,43 @@ class HomeController extends Controller
 
             return view('sites._components.search')->with('products', $products);
         }
+    }
+
+    public function compare(Request $request)
+    {
+        $compare = session()->get('compare');
+        if ($request->show) {
+            $products = $this->product->wherein('id', $compare)->with(['productImages' => function ($query) {
+                $query->where('is_main', 1);
+            }, 'technicals'])->get();
+
+            return view('sites._components.compare_page')->with('products', $products);
+        }
+        if (count($compare) < 3) {
+            $compare[$request->product] = $request->product;
+            session()->put('compare', $compare);
+        } else {
+            session()->flash('limit', trans('sites.limit-3-product'));
+        }
+        $products = $this->product->find($compare);
+
+        return view('sites._components.compare')->with('products', $products);
+    }
+
+    public function deleteCompare(Request $request)
+    {
+        $compare = session()->get('compare');
+        unset($compare[$request->product]);
+        session()->forget('limit');
+        if (empty($compare)) {
+            session()->forget('compare');
+
+            return 0;
+        } else {
+            session()->put('compare', $compare);
+        }
+        $products = $this->product->find($compare);
+
+        return view('sites._components.compare')->with('products', $products);
     }
 }

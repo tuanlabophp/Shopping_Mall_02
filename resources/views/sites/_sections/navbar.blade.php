@@ -56,7 +56,7 @@
                         <a href="#"><i class="fa fa-heart"></i>{{ trans('sites.wishlist') }}<span class="value">(21)</span> </a>
                     </div>
                     <div class="compare">
-                        <a href="#"><i class="fa fa-exchange"></i>{{ trans('sites.compare') }}<span class="value">(2)</span> </a>
+                        <a href="javascript:void(0)" class="showCompare"><i class="fa fa-exchange showCompare"></i>{{ trans('sites.compare') }}<span class="value">(2)</span> </a>
                     </div>
                 </div>
                 <!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->

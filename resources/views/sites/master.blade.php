@@ -13,6 +13,9 @@
         {{ Html::style('sites_custom/css/filter.css') }}
         {{ Html::style('sites_custom/css/js-image-slider.css') }}
         {{ Html::style('sites_custom/css/dark-green.css') }}
+        {{ Html::style('sites_custom/css/compare.css') }}
+        {{ Html::style('sites_custom/css/style.css') }}
+        {{ Html::style('sites_custom/css/w3.css') }}
         {{ Html::style('bower/owl.carousel/dist/assets/owl.carousel.css') }}
         {{ Html::style('bower/animate.css/animate.min.css') }}
         {{ Html::style('bower/components-font-awesome/css/font-awesome.min.css') }}
@@ -49,6 +52,7 @@
         {{ Html::script('sites_custom/js/respond.min.js') }}
         {{ Html::script('sites_custom/js/cart.js') }}
         {{ Html::script('sites_custom/js/search.js') }}
+        {{ Html::script('sites_custom/js/compare.js') }}
         {{ Html::script('https://ws.sharethis.com/button/buttons.js') }}
     </body>
 </html>
