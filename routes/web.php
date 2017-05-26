@@ -14,6 +14,8 @@
 Route::get('admin', 'AdminController@index')->middleware('admin');
 Route::get('/', 'Sites\HomeController@index')->name('/');
 Route::get('search', 'Sites\HomeController@search')->name('search');
+Route::get('compare', 'Sites\HomeController@compare')->name('compare');
+Route::get('compare/delete', 'Sites\HomeController@deleteCompare')->name('delcompare');
 
 //login logout
 Route::post('login', 'LoginController@login')->name('login');

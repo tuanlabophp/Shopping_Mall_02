@@ -40,4 +40,15 @@ class Helpers
             }
         }
     }
+
+    public static function getProfileFull($product)
+    {
+        $profileProduct = json_decode($product['profile_full'], true);
+        unset($profileProduct['technicals']);
+        unset($profileProduct['_method']);
+        unset($profileProduct['quantity']);
+        unset($profileProduct['status']);
+
+        return $profileProduct;
+    }
 }
