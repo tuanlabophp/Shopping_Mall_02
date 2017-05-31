@@ -53,67 +53,17 @@
             <div class="top-cart-row-container">
                 <div class="wishlist-compare-holder">
                     <div class="wishlist ">
-                        <a href="#"><i class="fa fa-heart"></i>{{ trans('sites.wishlist') }}<span class="value">(21)</span> </a>
+                        <a href="{{ asset('wishlist') }}"><i class="fa fa-heart"></i>{{ trans('sites.wishlist') }}(<span class="value wishlist-count">{{ isset($wishlists) ? $wishlists :'' }}</span>)</a>
                     </div>
                     <div class="compare">
-                        <a href="javascript:void(0)" class="showCompare"><i class="fa fa-exchange showCompare"></i>{{ trans('sites.compare') }}<span class="value">(2)</span> </a>
+                        <a href="javascript:void(0)" class="showCompare"><i class="fa fa-exchange showCompare"></i>{{ trans('sites.compare') }}<span class="value"></span> </a>
                     </div>
                 </div>
                 <!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->
                 <div class="top-cart-holder dropdown animate-dropdown">
                     <div class="basket">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <div class="basket-item-count">
-                                <span class="count">3</span>
-                                <img src="" alt="" />
-                            </div>
-
-                            <div class="total-price-basket"> 
-                                <span class="lbl">{{ trans('sites.yourcart') }}</span>
-                                <span class="total-price">
-                                    <span class="sign">$</span><span class="value">3219,00</span>
-                                </span>
-                            </div>
-                        </a>
-
-                        <ul class="dropdown-menu">
-                        <div class="cart">
-                            <li>
-                                <div class="basket-item">
-                                    <div class="row">
-                                        <div class="col-xs-4 col-sm-4 no-margin text-center">
-                                            <div class="thumb">
-                                                <img alt="" src="" />
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-xs-8 col-sm-8 no-margin">
-
-                                            <div class="title">{{ trans('sites.blueberry') }}</div>
-                                            <div class="price"></div>
-                                        </div>
-
-                                    </div>
-                                    <a class="close-btn" href="#"></a>
-                                </div>
-                            </li>
-                        </div>
-                        {{-- @endforeach --}}
-                            <li class="checkout">
-                                <div class="basket-item">
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-6">
-                                            <a href="cart.html" class="le-button inverse">{{ trans('sites.viewcart') }}</a>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-6">
-                                            <a href="checkout.html" class="le-button">{{ trans('sites.checkout') }}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div><!-- /.basket -->
+                        @include('sites._components.sub_cart')
+                    </div>
                 </div><!-- /.top-cart-holder -->
             </div><!-- /.top-cart-row-container -->
             <!-- ============================================================= SHOPPING CART DROPDOWN : END ============================================================= -->       
