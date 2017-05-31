@@ -8,6 +8,9 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\Technical;
+use App\Models\Wishlist;
+use Auth;
+use Session;
 
 class HomeController extends Controller
 {
@@ -15,18 +18,18 @@ class HomeController extends Controller
         Category $category,
         Product $product,
         ProductImage $productImage,
-        Technical $technical
+        Technical $technical,
+        Wishlist $wishlist
     ) {
         $this->category = $category;
         $this->product = $product;
         $this->productImage = $productImage;
         $this->technical = $technical;
+        $this->wishlist = $wishlist;
     }
 
     public function index()
     {
-        $categoriesParent = $this->category->where('parent_id', null)->get();
-        $categories = $this->category->where('parent_id', '!=', null)->get();
         $products['featured'] = $this->product
             ->feature()
             ->with(['productImages' => function ($query) {
@@ -43,12 +46,20 @@ class HomeController extends Controller
                 $query->where('is_main', 1);
             }])->orderBy('sale_percent', 'desc')->get();
         $technicals = $this->technical->all();
+        $wishlists = [];
+        if (Auth::check()) {
+            $wishlists =  $this->wishlist->where('user_id', Auth::user()->id)->get(['product_id'])->toArray();
+            foreach ($wishlists as $key => $wishlist) {
+                $wishlists[$key ] = $wishlist['product_id'];
+            }
+        }
 
         return view('sites.home.index')
-            ->with(['categoriesParent' => $categoriesParent,
-                'categories' => $categories,
-                'products' => $products,
-                'technicals' => $technicals ]);
+                    ->with([
+                        'products' => $products,
+                        'wishlists' => $wishlists,
+                        'technicals' => $technicals
+                    ]);
     }
 
     public function search(Request $request)
@@ -115,7 +126,10 @@ class HomeController extends Controller
 
             return view('sites._components.search')->with('products', $products);
         } elseif ($name = $request->name) {
-            return $this->product->where('name', 'like', '%' . $name . '%')->get();
+            $products = $this->product->where('name', 'like', '%' . $name . '%')->paginate(12);
+             $products->withPath("/search?name=$request->name");
+
+            return view('sites.search.index')->with('products', $products);
         } elseif ($size = $request->size) {
             $products;
             switch ($size) {

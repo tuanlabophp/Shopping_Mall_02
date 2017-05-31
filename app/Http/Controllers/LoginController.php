@@ -15,6 +15,9 @@ class LoginController extends Controller
         $user = Auth::attempt(['email' => $request->email, 'password' => $request->password]);
         if ($user) {
             if (Auth::user()->rule == 0) {
+                if (session()->get('cart')) {
+                    return redirect('checkout');
+                }
                 return redirect('/');
             } else {
                 return redirect('admin');
