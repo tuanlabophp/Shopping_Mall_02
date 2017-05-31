@@ -5,8 +5,8 @@
             <li>
                 <span>{{ trans('sites.brand') }}</span>
                 <ul>
-                @foreach ($categoriesParent as $categoryParent)
-                    <li  class="category" category-id = "{{ $categoryParent['id'] }}">{{ $categoryParent['name'] }}</li>
+                @foreach ($categories as $category)
+                    <li  class="category" category-id = "{{ $category['id'] }}">{{ $category['name'] }}</li>
                 @endforeach
                 </ul>
             </li>

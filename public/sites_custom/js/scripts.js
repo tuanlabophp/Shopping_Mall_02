@@ -309,19 +309,6 @@
             e.preventDefault();
         });
 
-        // Quantity Spinner
-        $('.le-quantity a').click(function(e){
-            e.preventDefault();
-            var currentQty= $(this).parent().parent().find('input').val();
-            if( $(this).hasClass('minus') && currentQty>0){
-                $(this).parent().parent().find('input').val(parseInt(currentQty, 10) - 1);
-            }else{
-                if( $(this).hasClass('plus')){
-                    $(this).parent().parent().find('input').val(parseInt(currentQty, 10) + 1);
-                }
-            }
-        });
-
         // Price Slider
         if ($('.price-slider').length > 0) {
             $('.price-slider').slider({

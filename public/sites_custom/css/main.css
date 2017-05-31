@@ -847,7 +847,6 @@ header .top-cart-row {
 }
 header .top-cart-row .wishlist-compare-holder {
     line-height: 24px;
-    margin: 0 18px 0 0;
     font-size: 13px;
     text-transform: capitalize;
     display: inline-block;
@@ -3568,7 +3567,7 @@ header .top-cart-row .top-cart-holder .total-price-basket {
     min-width: 230px;
 }
 #checkout-page #subtotal-holder .tabled-data li .value {
-    width: 140px;
+    width: 130px;
 }
 #checkout-page #total-field {
     margin-top: 11px;

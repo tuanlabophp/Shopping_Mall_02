@@ -35,8 +35,16 @@ class ProductController extends Controller
 
     public function pageProduct($id)
     {
-        $category = $this->category->where('id', $id)->orwhere('parent_id', $id)->with('products.productImages')->get();
-        // return $category;
-        return view('sites.product.page')->with('category', $category);
+        $categories = $this->category->where('id', $id)->orwhere('parent_id', $id)->get(['id'])->toArray();
+        foreach ($categories as $key => $value) {
+            $categories[$key] = $value['id'];
+        }
+        $category = $this->category->where('id', $id)->first();
+        $products = $this->product
+                            ->whereIn('category_id', $categories)
+                            ->with('productImages')
+                            ->paginate(12);
+
+        return view('sites.product.page')->with(['category' => $category, 'products' => $products]);
     }
 }
