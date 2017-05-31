@@ -27,6 +27,8 @@
             @include('sites._sections.navbar')
             <div class="content">
                 @yield('content')
+                <div class="w3-container  w3-center comparePanle"></div>
+                <div id="id01" class="w3-animate-zoom w3-white w3-modal modPos"></div>
             </div>
             @include('sites._sections.footer')
         </div>
@@ -46,13 +48,13 @@
         {{ Html::script('bower/raty/lib/jquery.raty.js') }}
         {{ Html::script('bower/jquery-prettyPhoto/js/jquery.prettyPhoto.js') }}
         {{ Html::script('bower/wow/dist/wow.min.js') }}
-        {{ Html::script('bower/scriptjs/dist/script.js') }}
         {{ Html::script('sites_custom/js/scripts.js') }}
         {{ Html::script('sites_custom/js/gmap3.js') }}
         {{ Html::script('sites_custom/js/respond.min.js') }}
         {{ Html::script('sites_custom/js/cart.js') }}
         {{ Html::script('sites_custom/js/search.js') }}
         {{ Html::script('sites_custom/js/compare.js') }}
+        {{ Html::script('sites_custom/js/wishlist.js') }}
         {{ Html::script('https://ws.sharethis.com/button/buttons.js') }}
     </body>
 </html>
