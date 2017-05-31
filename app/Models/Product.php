@@ -64,4 +64,9 @@ class Product extends Model
     {
         return $query->where('sale_percent', '!=', 0);
     }
+
+    public function category()
+    {
+        return $this->hasMany(Category::class, 'id', 'category_id');
+    }
 }

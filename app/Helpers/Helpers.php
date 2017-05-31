@@ -51,4 +51,29 @@ class Helpers
 
         return $profileProduct;
     }
+
+    public static function totalCart($products, $cart)
+    {
+        $total = 0;
+        foreach ($products as $product) {
+            $total += Helpers::priceProduct($product) * $cart[$product['id']];
+        }
+
+        return $total;
+    }
+
+    public static function priceProduct($product)
+    {
+        $price = 0;
+        if ($product['sale_percent']) {
+            if ($product['sale_percent'] > 100) {
+                $product['sale_percent'] = 100;
+            }
+            $price = $product['price'] * (100 - $product['sale_percent']) / 100;
+        } else {
+            $price = $product['price'];
+        }
+
+        return $price;
+    }
 }
