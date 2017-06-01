@@ -1,12 +1,37 @@
 <!-- ============================================================= FOOTER ============================================================= -->
 <footer id="footer" class="color-bg">
-    
+
     <div class="container">
         <div class="row no-margin widgets-row">
             <div class="col-xs-12  col-sm-4 no-margin-left">
                 <!-- ============================================================= FEATURED PRODUCTS ============================================================= -->
                 <div class="widget">
                     <h2>{{ trans('sites.featureproducts') }}</h2>
+                    <div class="body">
+                        <ul>
+                            @foreach ($topFiveProduct['featured'] as $product)
+                            <li>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-9 no-margin">
+                                        <a href="single-product.html">{{ $product['name'] }}</a>
+                                        <div class="price">
+                                            <div class="price-prev">{{ number_format($product['price']) . 'đ' }}</div>
+                                            <div class="price-current">{{ number_format(App\Helpers\Helpers::priceProduct($product)) . 'đ'}}</div>
+                                        </div>
+                                    </div>  
+
+                                    <div class="col-xs-12 col-sm-3 no-margin">
+                                        <a href="#" class="thumb-holder">
+                                        @if (!empty($product->productImages[0]))
+                                            <img alt="" src="{{ asset(config('setup.product_image_path') . '/' . $product->productImages[0]['path_origin']) }}" />
+                                        @endif
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div> <!-- /.widget -->
                 <!-- ============================================================= FEATURED PRODUCTS : END ============================================================= -->            
             </div><!-- /.col -->
@@ -15,6 +40,31 @@
                 <!-- ============================================================= ON SALE PRODUCTS ============================================================= -->
                 <div class="widget">
                     <h2>{{ trans('sites.onsaleproducts') }}</h2>
+                    <div class="body">
+                        <ul>
+                            @foreach ($topFiveProduct['new'] as $product)
+                            <li>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-9 no-margin">
+                                        <a href="single-product.html">{{ $product['name'] }}</a>
+                                        <div class="price">
+                                            <div class="price-prev">{{ number_format($product['price']) . 'đ' }}</div>
+                                            <div class="price-current">{{ number_format(App\Helpers\Helpers::priceProduct($product)) . 'đ'}}</div>
+                                        </div>
+                                    </div>  
+
+                                    <div class="col-xs-12 col-sm-3 no-margin">
+                                        <a href="#" class="thumb-holder">
+                                        @if (!empty($product->productImages[0]))
+                                            <img alt="" src="{{ asset(config('setup.product_image_path') . '/' . $product->productImages[0]['path_origin']) }}" />
+                                        @endif
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div> <!-- /.widget -->
                 <!-- ============================================================= ON SALE PRODUCTS : END ============================================================= -->            
             </div><!-- /.col -->
@@ -23,6 +73,31 @@
                 <!-- ============================================================= TOP RATED PRODUCTS ============================================================= -->
                 <div class="widget">
                     <h2>{{ trans('sites.topratedproducts') }}</h2>
+                    <div class="body">
+                        <ul>
+                            @foreach ($topFiveProduct['sale'] as $product)
+                            <li>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-9 no-margin">
+                                        <a href="single-product.html">{{ $product['name'] }}</a>
+                                        <div class="price">
+                                            <div class="price-prev">{{ number_format($product['price']) . 'đ' }}</div>
+                                            <div class="price-current">{{ number_format(App\Helpers\Helpers::priceProduct($product)) . 'đ'}}</div>
+                                        </div>
+                                    </div>  
+
+                                    <div class="col-xs-12 col-sm-3 no-margin">
+                                        <a href="#" class="thumb-holder">
+                                        @if (!empty($product->productImages[0]))
+                                            <img alt="" src="{{ asset(config('setup.product_image_path') . '/' . $product->productImages[0]['path_origin']) }}" />
+                                        @endif
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div><!-- /.widget -->
                 <!-- ============================================================= TOP RATED PRODUCTS : END ============================================================= -->            
             </div><!-- /.col -->
@@ -46,7 +121,7 @@
             <div class="col-xs-12 col-md-4 ">
                 <!-- ============================================================= CONTACT INFO ============================================================= -->
                 <div class="contact-info">
-                    
+
                     <p class="regular-bold"> {{ trans('sites.contact') }}</p>    
                     <p>{{ trans('sites.address') }}</p>
                     <div class="social-icons">

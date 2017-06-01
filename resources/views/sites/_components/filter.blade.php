@@ -39,3 +39,4 @@
         </ul>
     </div>    
 </div>
+<div id="products-tab" class="wow fadeInUp"></div>

@@ -1,5 +1,4 @@
-<div id="products-tab" class="wow fadeInUp"></div>
-<div id="" class="wow fadeInUp">
+<div id="products" class="wow fadeInUp">
     <div class="container">
         <div class="tab-holder">
             <!-- Nav tabs -->
@@ -10,7 +9,7 @@
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
-                <div class="tab-pane active" id="featured">
+                <div class="tab-pane active" id="featured"    >
                     <div class="product-grid-holder">
                     @foreach ($products['featured'] as $product)
                         @include('sites._components.product_item')

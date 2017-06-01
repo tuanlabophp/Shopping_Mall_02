@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Helpers\Helpers;
 use Session;
 use Auth;
 use DB;
@@ -55,18 +56,14 @@ class OrderController extends Controller
             $order['address'] = $request->address;
             $order['phone'] = $request->phone;
             $order['payment'] = $request->payment;
-            $cart = session()->get('cart');
             $order = $this->order->create($order);
 
+            $cart = session()->get('cart');
             $products = $this->product->wherein('id', array_keys($cart))->get();
             foreach ($products as $product) {
                 $orderDetail['product_id'] = $product['id'];
                 $orderDetail['quantity'] = $cart[$product['id']];
-                if ($product['sale_percent']) {
-                    $orderDetail['price'] = $product['price'] * $product['sale_percent'] * $cart[$product['id']] / 100;
-                } else {
-                    $orderDetail['price'] = $product['price'];
-                }
+                $orderDetail['price'] = Helpers::priceProduct($product, $cart);
                 $order->orderDetails()->create($orderDetail);
             }
             DB::commit();

@@ -36,7 +36,7 @@ class HomeController extends Controller
                 $query->where('is_main', 1);
             }])->get();
         $products['new'] = $this->product
-            ->new()
+            ->neww()
             ->with(['productImages' => function ($query) {
                 $query->where('is_main', 1);
             }])->orderBy('price', 'desc')->get();

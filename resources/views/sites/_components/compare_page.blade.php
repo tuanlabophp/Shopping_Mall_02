@@ -21,7 +21,7 @@
         <ul class="product">
             <li class="compHeader">
                 @foreach ($product->productImages as $image)
-                    <img src="{{ asset(config('setup.product_image_path') . '/' . $image->path_origin) }}" class="compareThumb">
+                    <img src="{{ asset(config('setup.product_image_path') . '/' . $image['path_origin']) }}" class="compareThumb">
                 @endforeach
             </li>
             @php

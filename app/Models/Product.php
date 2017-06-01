@@ -50,7 +50,7 @@ class Product extends Model
         return $this->hasMany(ProductImage::class);
     }
 
-    public function scopeNew($query)
+    public function scopeNeww($query)
     {
         return $query->where('status', 1);
     }

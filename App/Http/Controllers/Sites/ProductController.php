@@ -41,9 +41,9 @@ class ProductController extends Controller
         }
         $category = $this->category->where('id', $id)->first();
         $products = $this->product
-                            ->whereIn('category_id', $categories)
-                            ->with('productImages')
-                            ->paginate(12);
+                        ->whereIn('category_id', $categories)
+                        ->with('productImages')
+                        ->paginate(12);
 
         return view('sites.product.page')->with(['category' => $category, 'products' => $products]);
     }
