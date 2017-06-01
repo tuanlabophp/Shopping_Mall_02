@@ -30,6 +30,11 @@ class Product extends Model
         return $this->hasMany(Rate::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function orderDetails()
     {
         return $this->hasMany(OrderDetail::class);

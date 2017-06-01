@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <div class="col-xs-8 col-sm-8 no-margin">
-                        <div class="title">{{ $cart['name'] }}</div>
+                        <div class="title"><a href="{{ asset('product' . '/' . $cart['id']) }}">{{ $cart['name'] }}</a></div>
                         <div class="price">{{ number_format(App\Helpers\Helpers::priceProduct($cart)) }}</div>
                     </div>
                 </div>

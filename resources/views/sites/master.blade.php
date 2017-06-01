@@ -55,6 +55,7 @@
         {{ Html::script('sites_custom/js/search.js') }}
         {{ Html::script('sites_custom/js/compare.js') }}
         {{ Html::script('sites_custom/js/wishlist.js') }}
+        {{ Html::script('sites_custom/js/comment.js') }}
         {{ Html::script('https://ws.sharethis.com/button/buttons.js') }}
     </body>
 </html>

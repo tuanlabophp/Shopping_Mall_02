@@ -29,7 +29,7 @@ Route::get('cart/update', 'Sites\CartController@updateCart');
 Route::get('checkout', 'Sites\CartController@checkout')->middleware('auth');
 Route::resource('order', 'Sites\OrderController');
 
-Route::get('show/product/{id}', 'Sites\ProductController@index');
+Route::get('product/{id}', 'Sites\ProductController@index');
 Route::get('page/{id}', 'Sites\ProductController@pageProduct');
 
 //login logout
@@ -49,3 +49,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 });
 
 Route::get('admin/profile', 'AdminController@profile')->name('admin.profile');
+
+Route::get('product', 'Sites\ProductController@index')->name('product');
+Route::post('product_comment', 'Sites\CommentsController@store')->name('product.comment.add');
+Route::put('product_comment', 'Sites\CommentsController@update')->name('product.comment.edit');
+// Route::post('product_comment', 'Sites\CommentsController@destroy')->name('product.comment.delete');
+Route::post('product_rate', 'Sites\RatesController@store')->name('product.rate');

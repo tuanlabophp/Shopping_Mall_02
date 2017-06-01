@@ -17,7 +17,7 @@
 
                 <div class="col-xs-12 col-sm-5 ">
                     <div class="title">
-                        <a href="#">{{ $product['name'] }}</a>
+                        <a href="{{ asset('product' . '/' . $product['id']) }}">{{ $product['name'] }}</a>
                     </div>
                 </div> 
                 <div class="col-xs-12 col-sm-3 no-margin">
@@ -68,18 +68,6 @@
                         <a class="le-button big" href="{{ asset('checkout') }}" >{{ trans('sites.checkout') }}</a>
                         <a class="simple-link block" href="{{ asset('/') }}">{{ trans('sites.continue_shopping') }}</a>
                     </div>
-                </div>
-            </div><!-- /.widget -->
-
-            <div id="cupon-widget" class="widget">
-                <h1 class="border">{{ trans('sites.use_coupon') }}</h1>
-                <div class="body">
-                    <form>
-                        <div class="inline-input">
-                            <input data-placeholder="enter coupon code" type="text" />
-                            <button class="le-button" type="submit">{{ trans('sites.apply') }}</button>
-                        </div>
-                    </form>
                 </div>
             </div><!-- /.widget -->
         </div><!-- /.sidebar -->

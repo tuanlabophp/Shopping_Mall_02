@@ -4,7 +4,7 @@
     {!! Form::open(['route' => 'order.store', 'method' => 'post']) !!}
         <div class="col-xs-12 no-margin">
             <div class="billing-address">
-                <h2 class="border h1">billing address</h2>
+                <h2 class="border h1">{{ trans('sites.billing_info') }}</h2>
                 
                     <div class="row field-row">
                         <div class="col-xs-12 col-sm-6">
@@ -25,19 +25,19 @@
 
                     <div class="row field-row">
                         <div class="col-xs-12 col-sm-4">
-                            {!! Form::label('email', trans('site.email')) !!}
+                            {!! Form::label('email', trans('sites.email')) !!}
                             {!! Form::text('email', Auth::user()->email, $attributes= ['class' => 'le-input']) !!}
                         </div>
 
                         <div class="col-xs-12 col-sm-4">
-                            {!! Form::label('phone', trans('site.phone')) !!}
+                            {!! Form::label('phone', trans('sites.phone_number')) !!}
                             {!! Form::text('phone', Auth::user()->address, $attributes= ['class' => 'le-input']) !!}
                         </div>
                     </div><!-- /.field-row -->
                 
             </div><!-- /.billing-address -->
             <section id="your-order">
-                <h2 class="border h1">your order</h2>
+                <h2 class="border h1">{{ trans('sites.your_order') }}</h2>
                 @foreach ($products as $product)
                     <div class="row no-margin order-item">
                         <div class="col-xs-12 col-sm-1 no-margin">
@@ -99,7 +99,7 @@
             </div><!-- /#payment-method-options -->
             
             <div class="place-order-button">
-                {!! Form::submit(trans('view.place_order'), ['class' => 'le-button big']) !!}
+                {!! Form::submit(trans('sites.place_order'), ['class' => 'le-button big']) !!}
                 {!! Form::close() !!}
             </div><!-- /.place-order-button -->
 

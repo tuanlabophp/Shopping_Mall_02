@@ -9,7 +9,7 @@
     <div class="w3-col s3 m3 l3 compareItemParent relPos">
         <ul class="product">
             <li class=" relPos compHeader">
-                <p class="w3-display-middle">Features</p>
+                <p class="w3-display-middle">{{ trans('sites.features') }}</p>
             </li>
             @foreach ($profiles as $key => $profile)
                 <li class="{{ 'compare ' . $key }}">{{ trans('sites.' . $key) }}</li>

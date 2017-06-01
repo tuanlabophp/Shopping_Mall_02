@@ -26,9 +26,15 @@ class ProductController extends Controller
     public function index($id)
     {
         $product = $this->product
-            ->where('id', 16)
-            ->with(['productImages', 'technicals'])
-            ->get();
+                        ->where('id', $id)
+                        ->with(['productImages',
+                                'technicals',
+                                'comments' => function ($query) {
+                                                $query->orderBy('created_at', 'desc');
+                                },
+                                'rates' => function ($query) {
+                                            $query->orderBy('created_at', 'desc');
+                                }])->first();
 
         return view('sites.product.index')->with('product', $product);
     }

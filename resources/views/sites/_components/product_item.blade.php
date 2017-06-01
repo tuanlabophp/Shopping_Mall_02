@@ -6,7 +6,9 @@
         <div class="image">
         @foreach ($product->productImages as $image)
             @if ($image['is_main'] == 1)
-                <img src="{{ asset(config('setup.product_image_path') . '/' . $image['path_origin']) }}" alt="" width="246px" height="186px">
+                <a href="{{ asset('product' . '/' . $product['id']) }}">
+                    <img src="{{ asset(config('setup.product_image_path') . '/' . $image['path_origin']) }}" alt="" width="246px" height="186px">
+                </a>
                 @break;
             @endif
         @endforeach
@@ -18,7 +20,7 @@
                 <div class="label-discount green">{{ $product['sale_percent'] }}% {{ trans('sites.sale') }}</div>
                 
                 <div class="title">
-                    <a href="single-product.html">{{ $product['name'] }}</a>
+                    <a href="{{ asset('product' . '/' . $product['id']) }}">{{ $product['name'] }}</a>
                 </div>
             </div>
             <div class="prices">
@@ -28,7 +30,7 @@
         @else
             <div class="body">
                 <div class="title">
-                    <a href="single-product.html">{{ $product['name'] }}</a>
+                    <a href="{{ asset('product' . '/' . $product['id']) }}">{{ $product['name'] }}</a>
                 </div>
             </div>
             <div class="prices">
