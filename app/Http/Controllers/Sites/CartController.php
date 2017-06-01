@@ -35,7 +35,15 @@ class CartController extends Controller
     {
         $cart = session()->get('cart');
         if ($request->product) {
-            $cart[$request->product] = 1;
+            if ($request->quantity) {
+                $cart[$request->product] = $request->quantity;
+                session()->put('cart', $cart);
+
+                return redirect('cart');
+            } else {
+                $cart[$request->product] = 1;
+            }
+            
             session()->put('cart', $cart);
         }
         $products = $this->product->wherein('id', array_keys($cart))->with('productImages')->get();

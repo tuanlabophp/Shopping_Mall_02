@@ -24,6 +24,7 @@ class CommentsController extends Controller
      */
     public function store(CommentRequest $request)
     {
+        // dd($request->all());
         try {
             $attributes['content'] = $request->input('content');
             $attributes['user_id'] = $request->user()->id;
@@ -31,9 +32,10 @@ class CommentsController extends Controller
             $attributes['product_id'] = $request->input('product_id');
 
             $comment = new Comment($attributes);
-
             $comment->save();
-            // dd($comment);
+            $comments = Comment::where('product_id', $attributes['product_id'])->orderBy('created_at', 'desc')->get();
+            return view('sites._components.comments')->with(['product_id' => $attributes['product_id'], 'comments' => $comments]);
+
             session()->flash('success', trans('sites.create_comment_success'));
         } catch (\Exception $e) {
             session()->flash('fail', trans('sites.create_comment_fail'));
@@ -50,18 +52,18 @@ class CommentsController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(CommentRequest $request, Comment $comment)
+    public function update(CommentRequest $request)
     {
-        $attributes['content'] = $request->input('content_update');
+        $attributes['content'] = $request->content;
 
         try {
-            $comment->update($attributes);
+            $comment = $this->comment->where('id', $request->comment_id)->update($attributes);
+            $comments = Comment::where('product_id', $request->product_id)->orderBy('created_at', 'desc')->get();
+            return view('sites._components.comments')->with(['product_id' => $request->product_id, 'comments' => $comments]);
             session()->flash('success', trans('sites.update_comment_success'));
         } catch (\Exception $e) {
             session()->flash('fail', trans('sites.update_comment_fail'));
         }
-
-        return redirect('product');
     }
 
     /**
@@ -70,17 +72,17 @@ class CommentsController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        dd($id);
         try {
-            dd($id);
-            $comment->delete();
-            session()->flash('success', trans('sites.delele_comment_success'));
+            $this->comment->where('id', $request->comment_id)->delete();
+            $comments = Comment::where('product_id', $request->product_id)->orderBy('created_at', 'desc')->get();
+
+            return view('sites._components.comments')
+                        ->with(['product_id' => $request->product_id,
+                                'comments' => $comments]);
         } catch (\Exception $e) {
             session()->flash('success', trans('sites.delete_comment_success'));
         }
-
-        return redirect('product');
     }
 }

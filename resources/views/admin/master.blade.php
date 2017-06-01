@@ -15,10 +15,11 @@
     @yield('style')
 
 </head>
+if
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
         <header class="main-header">
-            <a href="../../index2.html" class="logo">
+            <a href="#" class="logo">
                 <span class="logo-lg">{{ trans('view.admin') }}</span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
@@ -27,10 +28,7 @@
                     <ul class="nav navbar-nav">
                         <!-- Messages: style can be found in dropdown.less-->
                         <li class="dropdown messages-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-envelope-o"></i>
-                                <span class="label label-success">4</span>
-                            </a>
+                            
                             <ul class="dropdown-menu">
                                 <li class="header">{{ trans('view.you_have') }} 4 {{trans('view.message')}}</li>
                                 <li>
@@ -114,16 +112,6 @@
                         </a>
                     </li>
                     <li class="treeview">
-                        <a href="{{ route('admin.comment.index') }}">
-                            <i class="fa fa-comments"></i> <span>{{ trans('view.comment') }}</span>
-                        </a>
-                    </li>
-                    <li class="treeview">
-                        <a href="{{ route('admin.rate') }}">
-                            <i class="fa fa-star-half-o"></i> <span>{{ trans('view.rate') }}</span>
-                        </a>
-                    </li>
-                    <li class="treeview">
                         <a href="{{ route('admin.user.index') }}">
                             <i class="fa fa-user-secret"></i> <span>{{ trans('view.user') }}</span>
                         </a>
@@ -145,7 +133,7 @@
             <div class="pull-right hidden-xs">
               <b>{{ trans('view.version') }}</b> {{ trans('view.version_number') }}
             </div>
-            <strong>{{ trans('view.copyright') }} &copy; {{ trans('view.year') }} <a href="http://almsaeedstudio.com">{{ trans('view.almsaeed_studio') }}</a>.</strong> {{ trans('view.all_rights_reserved') }}
+            <strong>{{ trans('view.copyright') }} &copy; {{ trans('view.year') }} <a href="{{ route('/') }}">{{ trans('view.app_name') }}</a>.</strong> {{ trans('view.all_rights_reserved') }}
         </footer>
     </div>
     {{ Html::script('bower/jquery/dist/jquery.js') }}

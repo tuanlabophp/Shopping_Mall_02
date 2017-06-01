@@ -13,7 +13,7 @@
                             <li>
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-9 no-margin">
-                                        <a href="single-product.html">{{ $product['name'] }}</a>
+                                        <a href="{{ asset('product') . '/' . $product['id'] }}">{{ $product['name'] }}</a>
                                         <div class="price">
                                             <div class="price-prev">{{ number_format($product['price']) . 'đ' }}</div>
                                             <div class="price-current">{{ number_format(App\Helpers\Helpers::priceProduct($product)) . 'đ'}}</div>
@@ -46,7 +46,7 @@
                             <li>
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-9 no-margin">
-                                        <a href="single-product.html">{{ $product['name'] }}</a>
+                                        <a href="{{ asset('product') . '/' . $product['id'] }}">{{ $product['name'] }}</a>
                                         <div class="price">
                                             <div class="price-prev">{{ number_format($product['price']) . 'đ' }}</div>
                                             <div class="price-current">{{ number_format(App\Helpers\Helpers::priceProduct($product)) . 'đ'}}</div>
@@ -79,7 +79,7 @@
                             <li>
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-9 no-margin">
-                                        <a href="single-product.html">{{ $product['name'] }}</a>
+                                        <a href="{{ asset('product') . '/' . $product['id'] }}">{{ $product['name'] }}</a>
                                         <div class="price">
                                             <div class="price-prev">{{ number_format($product['price']) . 'đ' }}</div>
                                             <div class="price-current">{{ number_format(App\Helpers\Helpers::priceProduct($product)) . 'đ'}}</div>

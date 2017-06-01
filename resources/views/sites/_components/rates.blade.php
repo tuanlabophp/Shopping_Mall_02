@@ -27,7 +27,7 @@
                                 {!! Form::textarea('content', $value = '', ['rows' => '2', 'class' => 'le-input']) !!}
                                 {!! Form::hidden('point', $value = '') !!}
                                 {!! Form::hidden('product_id', $value = $product->id) !!}
-                                {!! Form::submit(trans('sites.submit'), ['id' => 'submit_rate', 'class' => 'le-button']) !!}
+                                {!! Form::button(trans('sites.submit'), ['class' => 'le-button submit_rate_submit']) !!}
                                 {!! Form::close() !!}
                             </div><!-- /.new-comment-form -->
                         </div><!-- /.col -->

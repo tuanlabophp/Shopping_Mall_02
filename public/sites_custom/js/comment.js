@@ -1,24 +1,76 @@
-$(document).ready(function()
-{
-    $('#submit_comment').on('click', function()
-    {   
-        var content = $('#content').val();
-        var parent_id = $(this).attr('parent_id');
-        var product_id = $(this).attr('product_id');
-        $.ajax({
-            url: 'product/#comments',
-            type: 'post',
-            dataType: 'JSON',
-            data: {
-                content: content,
-                parent_id: parent_id,
-                product_id: product_id
-            },
-            success: function(result) {
-                $('#new_comment').html(result.data);
-            }
-        });
+$(document).on('click', '#add-comment', function(){
+    var text = $(this).parent().find('textarea').val();
+    $.ajax({
+        url: window.location.origin + "/product_comment",
+        type: 'post',
+        dataType: 'text',
+        data: {
+            content: text,
+            parent_id: $(this).attr('parent_id'),
+            product_id: $(this).attr('product_id'),
+            user_id: $(this).attr('user_id'),
+            _token: $(this).parent().find('input[name=_token]').val()
+        },
+        success: function(result) {
+            $('#comments').html(result);
+        }
     });
+    // alert('thang');
+});
+
+$(document).on('click', '.edit-comment', function(){
+    var text = $(this).parent().find('textarea').val();
+    $.ajax({
+        url: window.location.origin + "/product_comment/edit",
+        type: 'post',
+        dataType: 'text',
+        data: {
+            content: text,
+            comment_id: $(this).attr('comment_id'),
+            product_id: $(this).attr('product_id'),
+            _token: $(this).parent().find('input[name=_token]').val()
+        },
+        success: function(result) {
+            $('#comments').html(result);
+        }
+    });
+    // alert('thang');
+});
+
+$(document).on('click', '.edit-reply', function(){
+    var text = $(this).parent().find('textarea').val();
+    $.ajax({
+        url: window.location.origin + "/product_comment/edit",
+        type: 'post',
+        dataType: 'text',
+        data: {
+            content_reply: text,
+            comment_id: $(this).attr('comment_id'),
+            product_id: $(this).attr('product_id'),
+            _token: $(this).parent().find('input[name=_token]').val()
+        },
+        success: function(result) {
+            $('#comments').html(result);
+        }
+    });
+    // alert('thang');
+});
+
+$(document).on('click', '.button-delete', function(){
+    $.ajax({
+        url: window.location.origin + "/product_comment/delete",
+        type: 'post',
+        dataType: 'text',
+        data: {
+            comment_id: $(this).attr('comment_id'),
+            product_id: $(this).attr('product_id'),
+            _token: $(this).attr('token')
+        },
+        success: function(result) {
+            $('#comments').html(result);
+        }
+    });
+    // alert('thang');
 });
 
 $(document).on('click', '.button-reply', function(){
@@ -37,6 +89,28 @@ $(document).on('click', '#cancel_comment', function(){
     $('.reply').addClass('hide');
     $('.edit').addClass('hide');
 });
+
+$(document).on('click', '#thang', function(){
+    var text = $(this).parent().find('textarea').val();
+    $.ajax({
+        url: window.location.origin + "/product_comment",
+        type: 'post',
+        dataType: 'text',
+        data: {
+            content: text,
+            parent_id: $(this).attr('parent_id'),
+            product_id: $(this).attr('product_id'),
+            user_id: $(this).attr('user_id'),
+            _token: $(this).parent().find('input[name=_token]').val()
+        },
+        success: function(result) {
+            $('#comments').html(result);
+        }
+    });
+    // alert(text);
+});
+
+
 
 $('star').raty({
   cancel  : true,

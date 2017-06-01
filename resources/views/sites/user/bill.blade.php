@@ -72,18 +72,18 @@
                     <tr>
                         <td class="desc"></td>
                         <td class="qty"></td>
-                        <td class="unit">{{ trans('sites.sites.subtotal_cart') }}</td>
+                        <td class="unit">{{ trans('sites.subtotal_cart') }}</td>
                         <td class="total">{{ $orderTotal }}d</td>
                     </tr>
                     <tr>
                         <td class="desc"></td>
                         <td class="qty"></td>
                         <td class="unit">{{ trans('sites.shipping') }}</td>
-                        <td class="total">{{ trans('sites.sites.free_ship') }}</td>
+                        <td class="total">{{ trans('sites.free_ship') }}</td>
                     </tr>
                     <tr>
                         <td class="desc"></td>
-                        <td class="unit" colspan="2">{{ trans('sites.sites.order_total') }}</td>
+                        <td class="unit" colspan="2">{{ trans('sites.order_total') }}</td>
                         <td class="total">{{ $orderTotal }}d</td>
                     </tr>
                 </tbody>
@@ -94,12 +94,12 @@
 
 <footer>
     <div class="container">
-        <div class="thanks">{{ trans('sites.sites.thank_you') }}</div>
+        <div class="thanks">{{ trans('sites.thank_you') }}</div>
         <div class="notice">
-            <div>{{ trans('sites.sites.notice') }}</div>
-            <div>{{ trans('sites.sites.notice_text') }}</div>
+            <div>{{ trans('sites.notice') }}</div>
+            <div>{{ trans('sites.notice_text') }}</div>
         </div>
-        <div class="end">{{ trans('sites.sites.notice_text') }}</div>
+        <div class="end">{{ trans('sites.notice_text') }}</div>
     </div>
 </footer>
 

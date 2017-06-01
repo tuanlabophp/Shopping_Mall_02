@@ -49,16 +49,16 @@
         <div class="no-margin col-xs-12 col-sm-7 body-holder">
             <div class="body">
                 <div class="star-holder inline">
-                    <div class="star" data-score="4"></div>
+                    <div class="star" data-score="{{ $product->rates->avg('point') }}"></div>
                 </div>
-                <div class="availability"><label>{{ trans('sites.availability') }}</label><span class="available">  in stock</span></div>
+                <div class="availability"><label>{{ trans('sites.availability') }}</label><span class="available"></span></div>
 
                 <div class="title"><a href="#">{{ $product['name'] }}</a></div>
-                <div class="brand">sony</div>
+                <div class="brand"></div>
 
                 <div class="buttons-holder">
-                    <a class="btn-add-to-wishlist" href="#">{{ trans('sites.add_to_wishlist') }}</a>
-                    <a class="btn-add-to-compare" href="#">{{ trans('sites.add_to_compare_list') }}</a>
+                    <a class="btn-add-to-wishlist btn-add-to-wishlist" product="{{ $product['id'] }}" href="javascript:void(0)">{{ trans('sites.add_to_wishlist') }}</a>
+                    <a class="btn-add-to-compare addToCompare" product="{{ $product['id'] }}" href="javascript:void(0)">{{ trans('sites.add_to_compare_list') }}</a>
                 </div>
 
                 <div class="excerpt">
@@ -66,23 +66,31 @@
                 </div>
                 
                 <div class="prices">
-                @if ($product['sale_percent'] !=0)
-                    <div class="price-current">{{ $product['price']*$product['sale_percent']/100 }}</div>
-                    <div class="price-prev">{{ $product['price'] }}</div>
+                    <div class="price-current">{{ number_format(App\Helpers\Helpers::priceProduct($product)) . 'đ'}}</div>
+                    <div class="price-prev">{{ number_format($product['price']) . 'đ' }}</div>
                 </div>
-                @else
-                    <div class="price-current">{{ $product['price'] }}</div>
-                     <div class="price-pev"></div>
-                @endif
                 <div class="qnt-holder">
+                <form action="{{ asset('cart/add') }}" method="get">
+                @if (!empty(session()->get('cart')))
+                    @if (in_array($product['id'], array_keys(session()->get('cart'))))
+                        <h1 type="text" class="btn btn-warning huge">{{ trans('sites.in_your_cart') }}</h1>
+                    @else
+                        <div class="le-quantity">
+                            <input name="quantity" type="number" value="1" min="1" />
+                            <input name="product" type="text" hidden="true" value="{{ $product['id'] }}" />
+                            {{-- <a class="plus" href="#add"></a> --}}
+                        </div>
+                         <button type="submit" class="le-button huge">{{ trans('sites.buy') }}</button>
+                    @endif
+                @else
                     <div class="le-quantity">
-                        <form>
-                            <a class="minus" href="#reduce"></a>
-                            <input name="quantity" readonly="readonly" type="text" value="1" />
-                            <a class="plus" href="#add"></a>
-                        </form>
+                        <input name="quantity" type="number" value="1" min="1" />
+                        <input name="product" type="text" hidden="true" value="{{ $product['id'] }}" />
+                        {{-- <a class="plus" href="#add"></a> --}}
                     </div>
-                    <a id="addto-cart" href="cart.html" class="le-button huge">{{ trans('sites.add_to_cart') }}</a>
+                    <button type="submit" class="le-button huge">{{ trans('sites.buy') }}</button>
+                @endif
+                </form>
                 </div><!-- /.qnt-holder -->
             </div><!-- /.body -->
 
@@ -105,22 +113,21 @@
             <div class="tab-content">
                 <div class="tab-pane active" id="description">
                     <p>{{ $product['description'] }}</p>
-
-                    <p>more des</p>
-
                 </div><!-- /.tab-pane #description -->
-
+                @php
+                    $profiles = App\Helpers\Helpers::getProfileFull($product);
+                @endphp
                 <div class="tab-pane" id="additional-info">
                     <table class="table table-sm table-hover ">
-                        <thead>
-                            <th>atributtue</th>
-                            <th>detail</th>
+                        <thead class="dark-green">
+                            <th>{{ trans('sites.atributte') }}</th>
+                            <th>{{ trans('sites.detail') }}</th>
                         </thead>
-                    @foreach ($productDetail as  $key => $value)
+                    @foreach ($profiles as  $key => $value)
                         <tbody>
                             <tr>
-                                <th class="row">{{ $key }}</th>
-                                <td>{{ $value }}</td>
+                                <th class="row">{{ trans('sites.' . $key) }}</th>
+                                <td>{{ $value? $value : trans('sites.none') }}</td>
                             </tr>
                     @endforeach
                         </tbody>

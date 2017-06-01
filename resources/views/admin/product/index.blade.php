@@ -7,7 +7,6 @@
 @section('content')
 <!-- Main content -->
 <section class="content">
-    <a href="{{ asset(config('setup.product_path') . '/create') }}" class="btn btn-primary">{{ trans('view.product_create') }}</a>
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
@@ -25,6 +24,7 @@
                     @endif
 
                     <table id="example2" class="table table-bordered table-hover">
+                        <a href="{{ asset(config('setup.product_path') . '/create') }}" class="btn btn-primary">{{ trans('view.create') }}</a>
                         <thead>
                             <tr>
                                 <th>{{ trans('view.id') }}</th>
@@ -48,7 +48,7 @@
                                 <td>
                                     <a class= 'btn btn-warning' href="{{ asset('admin/product' . '/' . $product['id'] . '/edit') }} " >{{ trans('view.edit') }}</a>
                                     {!! Form::open(['route' => ['admin.product.destroy', $product['id']], 'method' => 'delete', 'id' => 'form-delete']) !!}
-                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                    {!! Form::submit(trans('view.delete'), ['class' => 'btn btn-danger']) !!}
                                     {!! Form::close() !!}
                                 </td>
                             </tr>

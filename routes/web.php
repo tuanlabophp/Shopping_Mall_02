@@ -52,6 +52,6 @@ Route::get('admin/profile', 'AdminController@profile')->name('admin.profile');
 
 Route::get('product', 'Sites\ProductController@index')->name('product');
 Route::post('product_comment', 'Sites\CommentsController@store')->name('product.comment.add');
-Route::put('product_comment', 'Sites\CommentsController@update')->name('product.comment.edit');
-// Route::post('product_comment', 'Sites\CommentsController@destroy')->name('product.comment.delete');
+Route::post('product_comment/edit', 'Sites\CommentsController@update')->name('product.comment.edit');
+Route::post('product_comment/delete', 'Sites\CommentsController@destroy')->name('product.comment.delete');
 Route::post('product_rate', 'Sites\RatesController@store')->name('product.rate');

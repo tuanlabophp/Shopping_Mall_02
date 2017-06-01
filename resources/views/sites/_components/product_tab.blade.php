@@ -14,7 +14,7 @@
                     @foreach ($products['featured'] as $product)
                         @include('sites._components.product_item')
                     @endforeach  
-                    </div>
+                    </div>  
                 </div>
                 <div class="tab-pane" id="new-arrivals">
                     <div class="product-grid-holder">
@@ -22,11 +22,6 @@
                         @include('sites._components.product_item')
                     @endforeach  
                     </div>
-                    <div class="loadmore-holder text-center">
-                        <a class="btn-loadmore" href="#">
-                            <i class="fa fa-plus"></i>
-                            {{ trans('sites.load_more_product') }}</a>
-                    </div> 
                 </div>
                 <div class="tab-pane" id="top-sales">
                     <div class="product-grid-holder">
@@ -34,11 +29,6 @@
                          @include('sites._components.product_item')
                     @endforeach  
                     </div>
-                    <div class="loadmore-holder text-center">
-                        <a class="btn-loadmore" href="#">
-                            <i class="fa fa-plus"></i>
-                            {{ trans('sites.load_more_product') }}</a>
-                    </div> 
                 </div>
             </div>
         </div>

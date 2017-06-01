@@ -6,7 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-        <title>{{ trans('site.app_name') }} | @yield('title') </title>
+        <title>{{ trans('sites.app_name') }} | @yield('title') </title>
 
         {{ Html::style('bower/bootstrap/dist/css/bootstrap.min.css') }}
         {{ Html::style('sites_custom/css/main.css') }}

@@ -19,7 +19,7 @@
                 </div>    
             @endif
             
-            {!!Form::open(['route' => 'admin.order.update', $order['id'], 'method' => 'put', 'enctype' => 'multipart/form-data'], ['class' => 'form-group']) !!}
+            {!!Form::open(['route' => ['admin.order.update', $order['id']], 'method' => 'put', 'enctype' => 'multipart/form-data'], ['class' => 'form-group']) !!}
             <table class="table">
                 <tr>
                     <td>{!!Form::label('user_id', trans('view.user_id'))!!}</td>
@@ -27,7 +27,7 @@
                 </tr>
                 <tr>
                     <td>{!!Form::label('email', trans('view.email'))!!}</td>
-                    <td>{!!Form::text('email', $value = '$order['email'], ['class' => 'form-control'])!!}</td>
+                    <td>{!!Form::text('email', $value = $order['email'], ['class' => 'form-control'])!!}</td>
                 </tr>
                 <tr>
                     <td>{!!Form::label('address', trans('view.address'))!!}</td>
@@ -45,7 +45,7 @@
                             '2' => trans('view.canceled'),
                             '3' => trans('view.expired'),
                         ],
-                        null, ['placeholder' => trans('view.choose_order_status')], ['class' => 'form-control'])!!}</td>
+                        null, ['placeholder' => trans('view.status')], ['class' => 'form-control'])!!}</td>
                 </tr>
                 <tr>
                     <td>{!!Form::label('payment', trans('view.payment'))!!}</td>
@@ -55,26 +55,6 @@
                         ],
                         null, ['placeholder' => trans('view.order_payment')], ['class' => 'form-control'])!!}</td>
                 </tr>
-
-                @foreach($shipper as $element)
-                    <tr>
-                        <td>{!!Form::label('shipper_id', trans('view.shipper_id'))!!}</td>
-                        <td>{!!Form::select('shipper_id', [
-                                $element->id => $element->name,
-                            ],
-                            null, ['placeholder' => trans('view.shipper_id')], ['class' => 'form-control'])!!}</td>
-                    </tr>
-                @endforeach
-
-                @foreach($deliver as $element)
-                    <tr>
-                        <td>{!!Form::label('deliver_id', trans('view.deliver_id'))!!}</td>
-                        <td>{!!Form::select('deliver_id', [
-                                $element->id => $element->name,
-                            ],
-                            null, ['placeholder' => trans('view.deliver_id')], ['class' => 'form-control'])!!}</td>
-                    </tr>
-                @endforeach
 
                 <tr>
                     <td>{!!Form::label('note', trans('view.note'))!!}</td>
