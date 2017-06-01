@@ -214,3 +214,23 @@
     display: inline-block;
     background-color: blue;
 }
+.name{
+    display: block;
+    height: 150px;
+    color: blue;
+}
+}
+.product li .inline {
+    margin:2px;
+    box-shadow: 6px 3px 4px #ccc;
+}
+.compare{
+    color: #21b68e;
+    font-weight: 600;
+}
+.price{
+    color: red;
+}
+.cart_item{
+    margin: 10px 0px;
+}

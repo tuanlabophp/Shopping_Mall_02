@@ -25,7 +25,7 @@ $(document).on('click', '.add-cart-button', function () {
                 $(this).removeClass('add-cart-button');
                 $(this).find('a').addClass('btn-warning btn');
                 $(this).find('a').removeClass('le-button');
-                $(this).find('a').text('in your cart');
+                $(this).find('a').text('Đã thêm vào giỏ');
             }
     })
 });
