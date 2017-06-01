@@ -65,7 +65,7 @@
                                 <div class="value">{{ number_format($total) . 'đ' }}</div>
                             </li>
                             <li>
-                                <label>{{ trans('shhipping') }}</label>
+                                <label>{{ trans('shipping') }}</label>
                                 <div class="value">
                                     <div class="radio-group">
                                         <div class="radio-label bold">{{ trans('sites.free_ship') }}</div>

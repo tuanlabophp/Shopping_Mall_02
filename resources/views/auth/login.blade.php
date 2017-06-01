@@ -11,6 +11,9 @@
             <div class="row">
                 <div class="col-md-8">
                     <section class="section sign-in inner-right-xs">
+                    @if(session()->has('success'))
+                        <h3 class="alert alert-success">{{ session()->get('success') }}</h3>
+                    @endif
                         <h2 class="bordered">{{ trans('sites.sign_in') }}</h2>
                         <p>{{ trans('sites.hello_wellcome_to_your_account') }}</p>
                         @if(count($errors) > 0)

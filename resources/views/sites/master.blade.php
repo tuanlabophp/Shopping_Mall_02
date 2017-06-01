@@ -39,7 +39,6 @@
         {{ Html::script('sites_custom/js/js-image-slider.js') }}
         {{ Html::script('sites_custom/js/owl.carousel.min.js') }}
         {{ Html::script('sites_custom/js/jquery.customSelect.min.js') }}
-        {{ Html::script('bower/owl.carousel/dist/owl.carousel.min.js') }}
         {{ Html::script('bower/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js') }}
         {{ Html::script('bower/css-browser-selector/css_browser_selector.js') }}
         {{ Html::script('bower/echojs/dist/echo.min.js') }}
