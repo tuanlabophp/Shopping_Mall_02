@@ -10,7 +10,7 @@ class Rate extends Model
         'id',
         'user_id',
         'product_id',
-        'poin',
+        'point',
         'content',
     ];
     protected $timestamp = true;
@@ -23,5 +23,10 @@ class Rate extends Model
     public function users()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getUser()
+    {
+        return $this->hasMany(User::class, 'id', 'user_id');
     }
 }

@@ -23,6 +23,10 @@ class Comment extends Model
 
     public function products()
     {
-        return $this->belongsTo(Products::class);
+        return $this->belongsTo(Product::class);
+    }
+    public function getUser()
+    {
+        return $this->hasMany(User::class, 'id', 'user_id');
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Product;
-use App\Models\wishList;
+use App\Models\Wishlist;
 use Auth;
 
 class wishListController extends Controller
@@ -26,7 +26,7 @@ class wishListController extends Controller
                                     $query->where('is_main', 1);
                                     }])->get();
 
-        return view('sites.user.wishList')->with('wishList', $wishList);
+        return view('sites.user.wishlist')->with('wishList', $wishList);
     }
 
     public function addwishList(Request $request)
@@ -37,7 +37,7 @@ class wishListController extends Controller
             }
             $count = $this->wishList->where('user_id', Auth::user()->id)->count();
 
-            return [$count, trans('sites.delete_wishList')];
+            return [$count, trans('sites.delete_wishlist')];
         } else {
             return [null, trans('sites.need_login')];
         }
@@ -57,11 +57,11 @@ class wishListController extends Controller
                                     $query->where('is_main', 1);
                                     }])->get();
 
-                return view('sites._components.wishList')->with('wishList', $wishList);
+                return view('sites._components.wishlist')->with('wishList', $wishList);
             }
             $count = $this->wishList->where('user_id', Auth::user()->id)->count();
 
-            return [$count, trans('sites.add_to_wishList')];
+            return [$count, trans('sites.add_to_wishlist')];
         } else {
             return [null, trans('sites.need_login')];
         }

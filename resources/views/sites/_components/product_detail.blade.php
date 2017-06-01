@@ -98,8 +98,8 @@
             <ul class="nav nav-tabs simple" >
                 <li class="active"><a href="#description" data-toggle="tab">{{ trans('sites.description') }}</a></li>
                 <li><a href="#additional-info" data-toggle="tab">{{ trans('sites.additional_information') }}</a></li>
-                <li><a href="#reviews" data-toggle="tab">{{ trans('sites.reviews') }} (3)</a></li>
-                <li><a href="#comments" data-toggle="tab">{{ trans('sites.comments') }} (3)</a></li>
+                <li><a href="#reviews" data-toggle="tab">{{ trans('sites.reviews') }} ({{ $product->rates->count() }})</a></li>
+                <li><a href="#comments" data-toggle="tab">{{ trans('sites.comments') }} ({{ $product->comments->count() }})</a></li>
             </ul><!-- /.nav-tabs -->
 
             <div class="tab-content">
@@ -127,188 +127,17 @@
                     </table><!-- /.tabled-data -->
                 </div><!-- /.tab-pane #additional-info -->
                 <div class="tab-pane" id="reviews">
-                    <div class="reviews">
-                        <div class="comment-item">
-                            <div class="row no-margin">
-                                <div class="col-lg-1 col-xs-12 col-sm-2 no-margin">
-                                    <div class="avatar">
-                                        <img alt="avatar" src="assets/images/default-avatar.jpg">
-                                    </div><!-- /.avatar -->
-                                </div><!-- /.col -->
-
-                                <div class="col-xs-12 col-lg-11 col-sm-10 no-margin">
-                                    <div class="comment-body">
-                                        <div class="meta-info">
-                                            <div class="author inline">
-                                                <a href="#" class="bold">John Smith</a>
-                                            </div>
-                                            <div class="star-holder inline">
-                                                <div class="star" data-score="4"></div>
-                                            </div>
-                                            <div class="date inline pull-right">
-                                                12.07.2013
-                                            </div>
-                                        </div><!-- /.meta-info -->
-                                        <p class="comment-text">
-                                            review content
-                                        </p><!-- /.comment-text -->
-                                    </div><!-- /.comment-body -->
-
-                                </div><!-- /.col -->
-
-                            </div><!-- /.row -->
-                        </div><!-- /.comment-item -->
-                    </div><!-- /.comments -->
-
-                    <div class="add-review row">
-                        <div class="col-sm-8 col-xs-12">
-                            <div class="new-review-form">
-                                <h2>{{ trans('sites.add_review') }}</h2>
-                                <form id="contact-form" class="contact-form" method="post">                                 
-                                    <div class="field-row star-row">
-                                        <label>{{ trans('sites.your_rating') }}</label>
-                                        <div class="star-holder">
-                                            <div class="star big" data-score="0"></div>
-                                        </div>
-                                    </div><!-- /.field-row -->
-
-                                    <div class="field-row">
-                                        <label>{{ trans('sites.your_review') }}</label>
-                                        <textarea rows="8" class="le-input"></textarea>
-                                    </div><!-- /.field-row -->
-
-                                    <div class="buttons-holder">
-                                        <button type="submit" class="le-button huge">{{ trans('sites.submit') }}</button>
-                                    </div><!-- /.buttons-holder -->
-                                </form><!-- /.contact-form -->
-                            </div><!-- /.new-review-form -->
-                        </div><!-- /.col -->
-                    </div><!-- /.add-review -->
+                    @login
+                        @include('sites._components.rates', ['product_id' => $product->id, 'rates' => $product->rates])
+                    @endlogin
                 </div><!-- /.tab-pane #reviews -->
 
                 <div class="tab-pane" id="comments">
-                    <div class="comments">
-                        <div class="comment-item">
-                            <div class="row no-margin">
-                                <div class="col-lg-1 col-xs-12 col-sm-2 no-margin">
-                                    <div class="avatar">
-                                        <img alt="avatar" src="assets/images/default-avatar.jpg">
-                                    </div><!-- /.avatar -->
-                                </div><!-- /.col -->
+                    @login
+                        @include('sites._components.comments', ['product_id' => $product->id, 'comments' => $product->comments])
+                    @endlogin
+                </div>
 
-                                <div class="col-xs-12 col-lg-11 col-sm-10 no-margin">
-                                    <div class="comment-body">
-                                        <div class="meta-info">
-                                            <div class="author inline">
-                                                <a href="#" class="bold">John Smith</a>
-                                            </div>
-                                            <div class="date inline pull-right">
-                                                12.07.2013
-                                            </div>
-                                        </div><!-- /.meta-info -->
-                                        <p class="comment-text">
-                                            comment content
-                                        </p><!-- /.comment-text -->
-                                    </div><!-- /.comment-body -->
-
-                                    <div>
-                                        <div class="col-lg-1 col-xs-12 col-sm-2 no-margin">
-                                            <div class="avatar">
-                                                <img alt="avatar" src="assets/images/default-avatar.jpg">
-                                            </div><!-- /.avatar -->
-                                        </div><!-- /.col -->
-                                        <div class="col-xs-12 col-lg-11 col-sm-10 no-margin">
-                                            <div class="comment-body">
-                                                <div class="meta-info">
-                                                    <div class="author inline">
-                                                        <a href="#" class="bold">John Sdit</a>
-                                                    </div>
-                                                    <div class="date inline pull-right">
-                                                        12.07.2013
-                                                    </div>
-                                                </div><!-- /.meta-info -->
-                                                <p class="comment-text">
-                                                    reply comment content
-                                                </p><!-- /.comment-text -->
-                                            </div><!-- /.comment-body -->
-                                        </div>
-                                    </div>
-
-                                </div><!-- /.col -->
-
-                            </div><!-- /.row -->
-                        </div><!-- /.comment-item -->
-                        <div class="comment-item">
-                            <div class="row no-margin">
-                                <div class="col-lg-1 col-xs-12 col-sm-2 no-margin">
-                                    <div class="avatar">
-                                        <img alt="avatar" src="assets/images/default-avatar.jpg">
-                                    </div><!-- /.avatar -->
-                                </div><!-- /.col -->
-
-                                <div class="col-xs-12 col-lg-11 col-sm-10 no-margin">
-                                    <div class="comment-body">
-                                        <div class="meta-info">
-                                            <div class="author inline">
-                                                <a href="#" class="bold">John Smith</a>
-                                            </div>
-                                            <div class="date inline pull-right">
-                                                12.07.2013
-                                            </div>
-                                        </div><!-- /.meta-info -->
-                                        <p class="comment-text">
-                                            comment content
-                                        </p><!-- /.comment-text -->
-                                    </div><!-- /.comment-body -->
-
-                                    <div>
-                                        <div class="col-lg-1 col-xs-12 col-sm-2 no-margin">
-                                            <div class="avatar">
-                                                <img alt="avatar" src="assets/images/default-avatar.jpg">
-                                            </div><!-- /.avatar -->
-                                        </div><!-- /.col -->
-                                        <div class="col-xs-12 col-lg-11 col-sm-10 no-margin">
-                                            <div class="comment-body">
-                                                <div class="meta-info">
-                                                    <div class="author inline">
-                                                        <a href="#" class="bold">John Sdit</a>
-                                                    </div>
-                                                    <div class="date inline pull-right">
-                                                        12.07.2013
-                                                    </div>
-                                                </div><!-- /.meta-info -->
-                                                <p class="comment-text">
-                                                    reply comment content
-                                                </p><!-- /.comment-text -->
-                                            </div><!-- /.comment-body -->
-                                        </div>
-                                    </div>
-
-                                </div><!-- /.col -->
-
-                            </div><!-- /.row -->
-                        </div><!-- /.comment-item -->
-
-                    </div><!-- /.comments -->
-
-                    <div class="add-review row">
-                        <div class="col-sm-8 col-xs-12">
-                            <div class="new-review-form">
-                                <h2>{{ trans('sites.add_comment') }}</h2>
-                                <form id="contact-form" class="contact-form" method="post" >                                    
-                                    <div class="field-row">
-                                        <label>{{ trans('sites.your_comment') }}</label>
-                                        <textarea rows="8" class="le-input"></textarea>
-                                    </div><!-- /.field-row -->
-
-                                    <div class="buttons-holder">
-                                        <button type="submit" class="le-button huge">{{ trans('sites.submit') }}</button>
-                                    </div><!-- /.buttons-holder -->
-                                </form><!-- /.contact-form -->
-                            </div><!-- /.new-review-form -->
-                        </div><!-- /.col -->
-                    </div><!-- /.add-review -->
-                </div><!-- /.tab-pane #reviews -->
             </div><!-- /.tab-content -->
 
         </div><!-- /.tab-holder -->

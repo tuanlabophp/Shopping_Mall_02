@@ -30,6 +30,11 @@ class Product extends Model
         return $this->hasMany(Rate::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function orderDetails()
     {
         return $this->hasMany(OrderDetail::class);
@@ -50,7 +55,7 @@ class Product extends Model
         return $this->hasMany(ProductImage::class);
     }
 
-    public function scopeNeww($query)
+    public function scopeNew($query)
     {
         return $query->where('status', 1);
     }
@@ -63,10 +68,5 @@ class Product extends Model
     public function scopeTopSale($query)
     {
         return $query->where('sale_percent', '!=', 0);
-    }
-
-    public function category()
-    {
-        return $this->hasMany(Category::class, 'id', 'category_id');
     }
 }
