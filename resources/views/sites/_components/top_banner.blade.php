@@ -7,25 +7,24 @@
                 <div class="head"><i class="fa fa-list"></i> {{ trans('sites.all_departments') }}</div>        
                 <nav class="yamm megamenu-horizontal" role="navigation">
                     <ul class="nav">
-                        @foreach ($categoriesParent as $categoryParent)
+                        @foreach ($categories as $category)
                         <li class="dropdown menu-item">
-                            <a href="#" data-hover="dropdown">{{ $categoryParent['name'] }}</a>
+                            <a href="{{ asset('page') . '/' . $category['id'] }}"  class="dropdown-toggle" data-hover="dropdown">{{ $category['name'] }}</a>
+                            @if (count($category->subCategories))
                             <ul class="dropdown-menu mega-menu">
                                 <li class="yamm-content">
                                     <div class="row">
                                         <div class="text-center">
                                             <ul class="list-unstyled">
-                                            @foreach ($categories as $category)
-                                                @if ($category['parent_id'] == $categoryParent['id'])
-                                                    <li><a href="index.html">{{ $category['name'] }}</a></li>
-                                                @endif
+                                            @foreach ($category->subCategories as $subCategory)
+                                                <li><a href="{{ asset('page') . '/' . $subCategory['id'] }}">{{ $subCategory['name'] }}</a></li>
                                             @endforeach
                                             </ul>
                                         </div>
                                     </div>
-                                </li>
-                                
+                                </li>  
                             </ul>
+                            @endif
                         </li><!-- /.menu-item -->
                         @endforeach
                     </ul><!-- /.nav -->

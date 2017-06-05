@@ -9,10 +9,10 @@
             &nbsp;
         @if (count($products) <=1 )
             <button class="w3-btn w3-round-small w3-white w3-border notActive cmprBtn" disabled="disabled">
-            Compare</button>
+            {{ trans('sites.compare') }}</button>
         @else 
             <button class="btn btn-warning notActive cmprBtn active">
-            Compare</button>
+            {{ trans('sites.compare') }}</button>
         @endif
             <button class="btn btn-danger closeCompare">x</button>
         </div>

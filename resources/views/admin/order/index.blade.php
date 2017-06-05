@@ -12,7 +12,7 @@
                 <div class="box">
                     <div class="box-header"><h3 class="box-title"></h3></div>
                     <div class="box-body">
-                        <a href="{{ asset('admin/order/create')}}" class="btn btn-primary">{{ trans('view.add_order') }}</a>
+                        <a href="{{ asset('admin/order/create')}}" class="btn btn-primary">{{ trans('view.create') }}</a>
 
                         @if (session()->has('success'))
                             <div class="alert alert-success">
@@ -32,10 +32,6 @@
                                     <th>{{ trans('view.email') }}</th>
                                     <th>{{ trans('view.address') }}</th>
                                     <th>{{ trans('view.phone') }}</th>
-                                    <th>{{ trans('view.status') }}</th>
-                                    <th>{{ trans('view.payment') }}</th>
-                                    <th>{{ trans('view.shipper_id') }}</th>
-                                    <th>{{ trans('view.deliver_id') }}</th>
                                     <th>{{ trans('view.note') }}</th>
                                     <th>{{ trans('view.created_at') }}</th>
                                     <th>{{ trans('view.updated_at') }}</th>
@@ -49,16 +45,13 @@
                                         <td>{{ $orders->email }}</td>
                                         <td>{{ $orders->address }}</td>
                                         <td>{{ $orders->phone }}</td>
-                                        <td>{{ $orders->payment }}</td>
-                                        <td>{{ $orders->shipper_id }}</td>
-                                        <td>{{ $orders->deliver_id }}</td>
                                         <td>{{ $orders->note }}</td>
                                         <td>{{ $orders->created_at }}</td>
                                         <td>{{ $orders->updated_at }}</td>
                                         <td>
                                             <button class="btn btn-warning"><a href="{{ asset('admin/order' . '/' . $orders['id'] . '/edit') }}">{{ trans('view.edit') }}</a></button>
                                             {!! Form::open(['route' => ['admin.order.destroy', $orders['id']], 'method' => 'delete', 'id' => 'form-delete']) !!}
-                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                    {!! Form::submit(trans('view.delete'), ['class' => 'btn btn-danger']) !!}
                                     {!! Form::close() !!}
                                         </td>
                                     </tr>

@@ -11,6 +11,9 @@
             <div class="row">
                 <div class="col-md-8">
                     <section class="section register inner-left-xs">
+                    @if(session()->has('success'))
+                        <h3 class="alert alert-danger">{{ session()->get('fail') }}</h3>
+                    @endif
                         <h2 class="bordered">{{ trans('sites.create_new_account') }}</h2>
                         <p>{{ trans('sites.create_your_own_mobile_phone_store_account') }}</p>
                         @if(count($errors) > 0)

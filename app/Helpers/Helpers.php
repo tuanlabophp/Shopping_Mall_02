@@ -48,6 +48,7 @@ class Helpers
         unset($profileProduct['_method']);
         unset($profileProduct['quantity']);
         unset($profileProduct['status']);
+        unset($profileProduct['category_id']);
 
         return $profileProduct;
     }

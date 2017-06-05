@@ -1,11 +1,11 @@
 @extends("admin.master")
 @section("title")
-    {{ trans('view.add_category') }}
+    {{ trans('view.edit_category') }}
 @endsection
 @section('content')
 
 <div class="container">
-    <div class=""><h3>{{ trans('view.add_category') }}</h3></div>
+    <div class=""><h3>{{ trans('view.edit_category') }}</h3></div>
         @if (count($errors))      
             <div class="alert alert-danger">
                 <ul>

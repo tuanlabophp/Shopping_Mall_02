@@ -1,5 +1,4 @@
-<div id="products-tab" class="wow fadeInUp"></div>
-<div id="" class="wow fadeInUp">
+<div id="products" class="wow fadeInUp">
     <div class="container">
         <div class="tab-holder">
             <!-- Nav tabs -->
@@ -10,12 +9,12 @@
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
-                <div class="tab-pane active" id="featured">
+                <div class="tab-pane active" id="featured"    >
                     <div class="product-grid-holder">
                     @foreach ($products['featured'] as $product)
                         @include('sites._components.product_item')
                     @endforeach  
-                    </div>
+                    </div>  
                 </div>
                 <div class="tab-pane" id="new-arrivals">
                     <div class="product-grid-holder">
@@ -23,11 +22,6 @@
                         @include('sites._components.product_item')
                     @endforeach  
                     </div>
-                    <div class="loadmore-holder text-center">
-                        <a class="btn-loadmore" href="#">
-                            <i class="fa fa-plus"></i>
-                            {{ trans('sites.load_more_product') }}</a>
-                    </div> 
                 </div>
                 <div class="tab-pane" id="top-sales">
                     <div class="product-grid-holder">
@@ -35,11 +29,6 @@
                          @include('sites._components.product_item')
                     @endforeach  
                     </div>
-                    <div class="loadmore-holder text-center">
-                        <a class="btn-loadmore" href="#">
-                            <i class="fa fa-plus"></i>
-                            {{ trans('sites.load_more_product') }}</a>
-                    </div> 
                 </div>
             </div>
         </div>

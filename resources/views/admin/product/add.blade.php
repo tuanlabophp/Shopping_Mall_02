@@ -9,7 +9,7 @@
 @endsection
 @section('content')
 <section class="content-header">
-    <h1>{{ trans('view.categories_management') }}</h1>
+    <h1>{{ trans('view.products_management') }}</h1>
     <div class="box box-primary">
         @if (count($errors))      
             <div class="alert alert-danger">
@@ -23,7 +23,7 @@
         {!!Form::open(['route' => ['admin.product.store'], 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
         <ul>
             <li>
-                {!!Form::label('name', trans('view.Name'), ['class' => 'label'])!!}
+                {!!Form::label('name', trans('view.name'), ['class' => 'label'])!!}
                 {!!Form::text('name', $value = '', $attributes = ['placeholder' => trans('view.name'), 'class' => 'form-control'])!!}
             </li>
             <li>
@@ -45,7 +45,7 @@
             </li>
             <li>
                 {!!Form::label('status', trans('view.status'), ['class' => 'label'])!!}
-                {!!Form::text('status', $value = '', $attributes = ['placeholder' => trans('view.statis'), 'class' => 'form-control'])!!}
+                {!!Form::text('status', $value = '', $attributes = ['placeholder' => trans('view.status'), 'class' => 'form-control'])!!}
             </li>
 
             {!!Form::label('display', trans('view.display'), ['class' => 'label head'])!!}

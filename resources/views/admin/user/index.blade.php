@@ -24,7 +24,7 @@
                             </div>
                         @endif
                     
-                        <a href="{{ asset('admin/user/create')}}" class="btn btn-primary">{{ trans('view.add_user') }}</a>
+                        <a href="{{ asset('admin/user/create')}}" class="btn btn-primary">{{ trans('view.create') }}</a>
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
