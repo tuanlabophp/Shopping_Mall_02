@@ -1,7 +1,7 @@
 @extends("admin.master")
 @section("title")
 
-{{ trans('view.add_product') }}
+{{ trans('view.edit_product') }}
 
 @endsection
 @section('content')
@@ -47,7 +47,7 @@
             </li>
             <li>
                 {!! Form::label('status', trans('view.status'), ['class' => 'label']) !!}
-                {!! Form::text('status', $value = $product['status'], $attributes = ['placeholder' => trans('view.statis'), 'class' => 'form-control']) !!}
+                {!! Form::text('status', $value = $product['status'], $attributes = ['placeholder' => trans('view.status'), 'class' => 'form-control']) !!}
             </li>
 
             {!! Form::label('display', trans('view.display'), ['class' => 'label head']) !!}

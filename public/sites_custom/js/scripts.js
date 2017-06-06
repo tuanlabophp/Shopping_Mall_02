@@ -252,8 +252,8 @@
                     
                     if($star.hasClass('big')){
                         $star.raty({
-                            starOff: 'assets/images/star-big-off.png',
-                            starOn: 'assets/images/star-big-on.png',
+                            starOff: '/bower/raty/lib/images/star-big-off.png',
+                            starOn: '/bower/raty/lib/images/star-big-on.png',
                             space: false,
                             score: function() {
                                 return $(this).attr('data-score');
@@ -261,8 +261,8 @@
                         });
                     }else{
                      $star.raty({
-                        starOff: 'assets/images/star-off.png',
-                        starOn: 'assets/images/star-on.png',
+                        starOff: '/bower/raty/lib/images/star-off.png',
+                        starOn: '/bower/raty/lib/images/star-on.png',
                         space: false,
                         score: function() {
                             return $(this).attr('data-score');
@@ -307,19 +307,6 @@
         // Buttons
         $('.le-button.disabled').click(function(e){
             e.preventDefault();
-        });
-
-        // Quantity Spinner
-        $('.le-quantity a').click(function(e){
-            e.preventDefault();
-            var currentQty= $(this).parent().parent().find('input').val();
-            if( $(this).hasClass('minus') && currentQty>0){
-                $(this).parent().parent().find('input').val(parseInt(currentQty, 10) - 1);
-            }else{
-                if( $(this).hasClass('plus')){
-                    $(this).parent().parent().find('input').val(parseInt(currentQty, 10) + 1);
-                }
-            }
         });
 
         // Price Slider

@@ -3,7 +3,7 @@
 
 $(document).on('click', '.addToCompare', function () {
     $.ajax({
-      url : 'compare',
+      url : window.location.origin + "/compare",
       type : "get",
       dateType:"text",
       data : {
@@ -19,14 +19,14 @@ $(document).on('click', '.addToCompare', function () {
 /*function to be executed when compare button is clicked*/
 $(document).on('click', '.cmprBtn', function () {
     $.ajax({
-      url : 'compare',
-      type : "get",
-      dateType:"text",
-      data : {
-          show: true},
-          success : function (result){
-             $('.modPos').html(result);
-             $(".modPos").show();
+            url : window.location.origin + "/compare",
+            type : "get",
+            dateType:"text",
+            data : {
+                show: true},
+            success : function (result){
+                $('.modPos').html(result);
+                $(".modPos").show();
          }
      })
 });
@@ -51,7 +51,7 @@ $(document).on('click', '.showCompare', function () {
 /*function to remove item from preview panel*/
 $(document).on('click', '.selectedItemCloseBtn', function () {
     $.ajax({
-        url : 'compare/delete',
+        url : window.location.origin + "/compare/delete",
         type : "get",
         dateType:"text",
         data : {

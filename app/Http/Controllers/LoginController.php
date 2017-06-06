@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\LoginForm;
 use App\Http\Requests\RegisterForm;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -46,12 +47,19 @@ class LoginController extends Controller
 
     public function userRegister(RegisterForm $request)
     {
-        $user = new User;
-        $user->l_name = $request->l_name;
-        $user->f_name = $request->f_name;
-        $user->email = $request->f_name;
-        $user->password = bcrypt($request->password);
-        $user->save();
+        try {
+            $user = new User;
+            $user->l_name = $request->l_name;
+            $user->f_name = $request->f_name;
+            $user->email = $request->f_name;
+            $user->password = bcrypt($request->password);
+            $user->save();
+            session()->flash('success', trans('sites.register_success'));
+            return redirect('login');
+        } catch (\Exception $e) {
+            session()->flash('fail', trans('sites.register_fail'));
+            return redirect('register');
+        }
     }
 
     public function checkUserRegister()

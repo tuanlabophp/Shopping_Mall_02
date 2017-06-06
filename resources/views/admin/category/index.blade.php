@@ -7,7 +7,6 @@
 <section class="content-header">
     <h1>{{ trans('view.manage_categories') }}</h1>
 </section> 
-<a href="{{ asset(config('setup.category_path') . '/create') }}" class="btn btn-primary">{{ trans('view.category_create') }}</a> 
 <div class="row">
 <div class="col-xs-12">
     <div class="box">
@@ -25,6 +24,7 @@
             @endif
 
             <table id="example2" class="table table-bordered table-hover">
+            <a href="{{ asset(config('setup.category_path') . '/create') }}" class="btn btn-primary">{{ trans('view.create') }}</a> 
                 <thead>
                     <tr>
                         <th>{{ trans('view.id') }}</th>
@@ -39,7 +39,7 @@
                         <td>{{ $category['name'] }}</td>
                         <td><a  class = "btn btn-warning" href="{{ asset(config('setup.category_path') . '/' . $category['id'] . '/edit')}}">{{ trans('view.edit') }}</a>
                             {!! Form::open(['route' => ['admin.category.destroy', $category['id']], 'method' => 'delete', 'id' => 'form-delete']) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                            {!! Form::submit(trans('view.delete'), ['class' => 'btn btn-danger']) !!}
                             {!! Form::close() !!}
                         </td>
                     </tr>
