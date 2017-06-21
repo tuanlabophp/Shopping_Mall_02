@@ -30,21 +30,24 @@ class HomeController extends Controller
 
     public function index()
     {
+        // return 1%2;
         $products['featured'] = $this->product
             ->feature()
             ->with(['productImages' => function ($query) {
-                $query->where('is_main', 1);
+                $query->where('is_main', 1)->select(['id', 'product_id', 'path_origin', 'is_main']);
             }])->get();
         $products['new'] = $this->product
             ->productNew()
             ->with(['productImages' => function ($query) {
-                $query->where('is_main', 1);
-            }])->orderBy('price', 'desc')->get();
+                $query->where('is_main', 1)->select(['id', 'product_id', 'path_origin', 'is_main']);
+            }, 'categories'])->orderBy('price', 'desc')->get();
         $products['sale'] = $this->product
             ->topSale()
             ->with(['productImages' => function ($query) {
-                $query->where('is_main', 1);
+                $query->select(['id', 'product_id', 'path_origin', 'is_main'])->where('is_main', 1);
             }])->orderBy('sale_percent', 'desc')->get();
+            // return 1;
+        // dd($products);
         $technicals = $this->technical->all();
         $wishlists = [];
         if (Auth::check()) {
@@ -87,7 +90,7 @@ class HomeController extends Controller
             switch ($price) {
                 case '<1':
                     $products =  $this->product
-                        ->where('price', '<=', 1000000)
+                        ->where('price', '<', 1000000)
                         ->with(['productImages' => function ($query) {
                             $query->where('is_main', 1);
                         }])->get();
@@ -95,8 +98,8 @@ class HomeController extends Controller
 
                 case '1-5':
                     $products =  $this->product
-                        ->where('price', '=>', 1000000)
-                        ->where('price', '<=', 5000000)
+                        ->where('price', '>', 1000000)
+                        ->where('price', '<', 5000000)
                         ->with(['productImages' => function ($query) {
                             $query->where('is_main', 1);
                         }])->get();
@@ -104,8 +107,8 @@ class HomeController extends Controller
 
                 case '5-10':
                     $products =  $this->product
-                        ->where('price', '=>', 5000000)
-                        ->where('price', '<=', 10000000)
+                        ->where('price', '>', 5000000)
+                        ->where('price', '<', 10000000)
                         ->with(['productImages' => function ($query) {
                             $query->where('is_main', 1);
                         }])->get();
@@ -113,7 +116,7 @@ class HomeController extends Controller
 
                 case '>10':
                     $products =  $this->product
-                        ->where('price', '=>', 10000000)
+                        ->where('price', '>', 10000000)
                         ->with(['productImages' => function ($query) {
                             $query->where('is_main', 1);
                         }])->get();

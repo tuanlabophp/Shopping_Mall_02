@@ -14,6 +14,7 @@ class ProductImage extends Model
         'is_main',
     ];
     public $timestamps = false;
+
     public function products()
     {
         return $this->belongsTo(Product::class);

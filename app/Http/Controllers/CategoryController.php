@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Session;
 use App\Helpers\Helpers;
+use App\Events\NewCategory;
 
 class CategoryController extends Controller
 {
@@ -53,11 +54,13 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         $category = $request->only(['name', 'parent_id']);
-        if ($this->category->create($category)) {
+        if ($category = $this->category->create($category)) {
             session()->flash('success', trans('view.add_category_success'));
         } else {
             session()->flash('fail', trans('view.add_category_fail'));
         }
+        event(new NewCategory($category));
+
         return redirect('admin/category');
     }
 

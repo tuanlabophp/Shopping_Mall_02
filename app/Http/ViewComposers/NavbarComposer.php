@@ -19,6 +19,7 @@ class NavbarComposer extends Controller
         $wishList = null;
         $products = null;
         $total = null;
+        $categories;
         if ($cart = session()->get('cart')) {
             $products = Product::wherein('id', array_keys(session()->get('cart')))->with('productImages')->get();
             $total = Helpers::totalCart($products, $cart);

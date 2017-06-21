@@ -22,7 +22,7 @@ class Product extends Model
 
     public function categories()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
     public function rates()
@@ -70,8 +70,8 @@ class Product extends Model
         return $query->where('sale_percent', '!=', 0);
     }
 
-    public function category()
-    {
-        return $this->hasMany(Category::class, 'id', 'category_id');
-    }
+    // public function category()
+    // {
+    //     return $this->hasMany(Category::class, 'id', 'category_id');
+    // }
 }

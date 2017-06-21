@@ -14,7 +14,15 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $categoryComposer = [
+            'sites._components.top_banner',
+            'sites._components.filter',
+            'sites._components.navigation',
+            ];
+
         view()->composer('sites._sections.navbar', 'App\Http\ViewComposers\NavbarComposer');
+        view()->composer($categoryComposer, 'App\Http\ViewComposers\CategoryComposer');
+        view()->composer('sites._sections.footer', 'App\Http\ViewComposers\TopFiveProductComposer');
     }
 
     /**
