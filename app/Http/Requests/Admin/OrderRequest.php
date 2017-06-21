@@ -23,7 +23,7 @@ class OrderRequest extends FormRequest
      *
      * @return array
      */
-    public function rules(User $user)
+    public function rules()
     {
         return [
             'email' => [

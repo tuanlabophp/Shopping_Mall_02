@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\LoginForm;
 use App\Http\Requests\RegisterForm;
 use App\Models\User;
+use Hash;
 
 class LoginController extends Controller
 {
@@ -51,8 +52,8 @@ class LoginController extends Controller
             $user = new User;
             $user->l_name = $request->l_name;
             $user->f_name = $request->f_name;
-            $user->email = $request->f_name;
-            $user->password = bcrypt($request->password);
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password_register);
             $user->save();
             session()->flash('success', trans('sites.register_success'));
             return redirect('login');

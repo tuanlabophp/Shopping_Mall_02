@@ -29,6 +29,10 @@
                 {!! Form::text('name', $value = $product['name'], $attributes = ['placeholder' => trans('view.name'), 'class' => 'form-control']) !!}
             </li>
             <li>
+                {!!Form::label('name', trans('view.description'), ['class' => 'label'])!!}
+                {!!Form::text('description', $value = $product['description'], $attributes = ['placeholder' => trans('view.description'), 'class' => 'form-control'])!!}
+            </li>
+            <li>
                 {!! Form::label('category', trans('view.category'), ['class' => 'label']) !!}
                 {!! Form::select('category_id', $categories, $product['category_id']) !!}
             </li>

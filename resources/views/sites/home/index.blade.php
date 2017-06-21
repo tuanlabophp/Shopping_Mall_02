@@ -8,6 +8,4 @@
     @include('sites._components.top_banner')
     @include('sites._components.filter')
     @include('sites._components.product_tab')
-    @include('sites._components.viewed')
-    @include('sites._components.top_brands')
 @endsection

@@ -49,7 +49,7 @@
                                         <td>
                                             <button class="btn btn-warning"><a href="{{ asset('admin/user' . '/' . $users['id'] . '/edit') }}">{{ trans('view.edit') }}</a></button>
                                             {!! Form::open(['route' => ['admin.user.destroy', $users['id']], 'method' => 'delete', 'id' => 'form-delete']) !!}
-                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                    {!! Form::submit(trans('view.delete'), ['class' => 'btn btn-danger']) !!}
                                     {!! Form::close() !!}
                                         </td>
                                     </tr>

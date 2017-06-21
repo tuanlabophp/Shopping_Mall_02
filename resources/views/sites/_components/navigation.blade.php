@@ -2,14 +2,6 @@
 <nav id="top-megamenu-nav" class="megamenu-vertical animate-dropdown">
     <div class="container">
         <div class="yamm navbar">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mc-horizontal-menu-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div><!-- /.navbar-header -->
             <div class="collapse navbar-collapse" id="mc-horizontal-menu-collapse">
                 <ul class="nav navbar-nav">
                 @foreach ($categories as $category)
@@ -20,7 +12,7 @@
                                 <li>
                                     <div class="yamm-content">
                                         <div class="row">
-                                           <div class="col-xs-12 col-sm-4">
+                                           <div class="col-xs-12">
                                                 <ul>
                                                 @foreach ($category->subCategories as $subCategory)
                                                     <li><a href="{{ asset('page') . '/' . $subCategory['id'] }}">{{ $subCategory['name'] }}</a></li>

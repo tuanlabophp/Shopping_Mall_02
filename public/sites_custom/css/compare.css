@@ -231,3 +231,15 @@
 .cart_item{
     margin: 10px 0px;
 }
+.back_camera_features {
+    display: block;
+    height: 70px;
+}
+ .front_camera_features {
+    display: block;
+    height: 70px;
+ }
+ .design_size{
+    display: block;
+    height: 70px;
+ }

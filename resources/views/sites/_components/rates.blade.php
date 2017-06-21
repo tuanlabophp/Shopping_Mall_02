@@ -1,9 +1,11 @@
 <div class="reviews">
+
+@if (Auth::check())
     <div class="comment-item">
         <div class="row no-margin">
             <div class="col-lg-1 col-xs-12 col-sm-2 no-margin">
                 <div class="avatar">
-                   {{--  {{ Html::image(Auth::user()->avatar, Auth::user()->f_name, ['class' => 'img-responsive']) }} --}}
+                    {{ Html::image(Auth::user()->avatar, Auth::user()->f_name, ['class' => 'img-responsive']) }}
                 </div><!-- /.avatar -->
             </div><!-- /.col -->
 
@@ -11,7 +13,7 @@
                 <div class="comment-body">
                     <div class="meta-info">
                         <div class="author inline">
-                            {{-- <a href="javascript:void(0)" class="bold">{{ Auth::user()->f_name }} {{ Auth::user()->l_name }}</a> --}}
+                            <a href="javascript:void(0)" class="bold">{{ Auth::user()->f_name }} {{ Auth::user()->l_name }}</a>
                         </div>
                     </div><!-- /.meta-info -->
                     <div class="add-comment row">
@@ -27,7 +29,7 @@
                                 {!! Form::textarea('content', $value = '', ['rows' => '2', 'class' => 'le-input']) !!}
                                 {!! Form::hidden('point', $value = '') !!}
                                 {!! Form::hidden('product_id', $value = $product->id) !!}
-                                {!! Form::button(trans('sites.submit'), ['class' => 'le-button submit_rate_submit']) !!}
+                                {!! Form::submit(trans('sites.submit'), ['id' => 'add_rate', 'class' => 'le-button']) !!}
                                 {!! Form::close() !!}
                             </div><!-- /.new-comment-form -->
                         </div><!-- /.col -->
@@ -37,6 +39,7 @@
 
         </div><!-- /.row -->
     </div><!-- /.comment-item -->
+    @endif
 </div>
 <div id="new_review"></div>
 <div class="reviews">

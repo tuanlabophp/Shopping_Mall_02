@@ -55,11 +55,11 @@
                 <tr>
                     <td>{!!Form::label('sex', trans('view.sex'))!!}</td>
                     <td>{!!Form::select('sex', [
-                            '1' => trans('view.sex_male'),
-                            '2' => trans('view.sex_female'),
-                            '3' => trans('view.sex_unknow'),
+                            '1' => trans('view.male'),
+                            '2' => trans('view.female'),
+                            '3' => trans('view.unknow'),
                         ],
-                        null, ['placeholder' => trans('view.choose_your_sex')], ['class' => 'form-control'])!!}</td>
+                        null, ['placeholder' => trans('view.sex')], ['class' => 'form-control'])!!}</td>
                 </tr>
                 <tr>
                     <td>{!!Form::label('rule', trans('view.rule'))!!}</td>

@@ -73,6 +73,7 @@ class ProductController extends Controller
             $input['name'] = $request->name;
             $input['category_id'] = $request->category_id;
             $input['price'] = $request->price;
+            $input['description'] = $request->description;
             $input['sale_percent'] = $request->sale_percent;
             $input['display_size'] = $request->display_size;
             $input['profile'] = json_encode($request->only([
@@ -164,6 +165,7 @@ class ProductController extends Controller
             $input['name'] = $request->name;
             $input['category_id'] = $request->category_id;
             $input['price'] = $request->price;
+            $input['description'] = $request->description;
             $input['sale_percent'] = $request->sale_percent;
             $input['display_size'] = $request->display_size;
             $input['quantity'] = $request->quantity;
@@ -204,10 +206,10 @@ class ProductController extends Controller
                 }
             }
             DB::commit();
-            $request->session()->flash('success', trans('admin.update_product_success'));
+            $request->session()->flash('success', trans('view.update_product_success'));
         } catch (\Exception $e) {
             DB::rollback();
-            $request->session()->flash('fail', trans('admin.update_product_fail'));
+            $request->session()->flash('fail', trans('view.update_product_fail'));
         }
 
         return redirect('admin/product');
@@ -231,10 +233,10 @@ class ProductController extends Controller
             $product->productTechnicals()->delete();
             $product->delete();
             DB::commit();
-            session()->flash('success', trans('admin.delete_product_success'));
+            session()->flash('success', trans('view.delete_product_success'));
         } catch (Exception $e) {
             DB::rollback();
-            session()->flash('fail', trans('admin.delete_product_fail'));
+            session()->flash('fail', trans('view.delete_product_fail'));
         }
         return redirect('admin/product');
     }

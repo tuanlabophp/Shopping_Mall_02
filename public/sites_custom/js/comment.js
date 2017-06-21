@@ -15,7 +15,6 @@ $(document).on('click', '#add-comment', function(){
             $('#comments').html(result);
         }
     });
-    // alert('thang');
 });
 
 $(document).on('click', '.edit-comment', function(){
@@ -34,7 +33,6 @@ $(document).on('click', '.edit-comment', function(){
             $('#comments').html(result);
         }
     });
-    // alert('thang');
 });
 
 $(document).on('click', '.edit-reply', function(){
@@ -53,7 +51,6 @@ $(document).on('click', '.edit-reply', function(){
             $('#comments').html(result);
         }
     });
-    // alert('thang');
 });
 
 $(document).on('click', '.button-delete', function(){
@@ -70,7 +67,6 @@ $(document).on('click', '.button-delete', function(){
             $('#comments').html(result);
         }
     });
-    // alert('thang');
 });
 
 $(document).on('click', '.button-reply', function(){
@@ -107,13 +103,23 @@ $(document).on('click', '#thang', function(){
             $('#comments').html(result);
         }
     });
-    // alert(text);
 });
 
-
-
-$('star').raty({
-  cancel  : true,
-  starOff : 'star-off-big.png',
-  starOn  : 'star-on-big.png'
+$(document).on('click', '#add-rate', function(){
+    var text = $(this).parent().find('textarea').val();
+    $.ajax({
+        url: window.location.origin + "/product_rate",
+        type: 'post',
+        dataType: 'text',
+        data: {
+            content: text,
+            product_id: $(this).attr('product_id'),
+            user_id: $(this).attr('user_id'),
+            point: $(this).attr('score'),
+            _token: $(this).parent().find('input[name=_token]').val()
+        },
+        success: function(result) {
+            $('#rate').html(result);
+        }
+    });
 });

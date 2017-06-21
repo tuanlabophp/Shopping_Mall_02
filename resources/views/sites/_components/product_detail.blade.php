@@ -50,8 +50,12 @@
             <div class="body">
                 <div class="star-holder inline">
                     <div class="star" data-score="{{ $product->rates->avg('point') }}"></div>
+                    <span class="availability">{{ trans('sites.point') }} {{ round($product->rates->avg('point'), 2) }}</span>
                 </div>
-                <div class="availability"><label>{{ trans('sites.availability') }}</label><span class="available"></span></div>
+                <div class="availability">
+                    <label>{{ trans('sites.availability') }}</label>
+                    <span class="available">{{ $product->quantity }}</span>
+                </div>
 
                 <div class="title"><a href="#">{{ $product['name'] }}</a></div>
                 <div class="brand"></div>

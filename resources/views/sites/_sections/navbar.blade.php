@@ -21,7 +21,10 @@
 
         <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
             <!-- ============================================================= LOGO ============================================================= -->
-            <img src="/upload/product/logo.png" alt="FramgiaPhone" width="70%">
+            <a href="{{ route('/') }}">
+                <img src="/upload/product/logo.png" alt="FramgiaPhone" width="70%">
+            </a>
+            
             <!-- ============================================================= LOGO : END ============================================================= -->     
         </div><!-- /.logo-holder -->
 

@@ -12,7 +12,6 @@
                 <div class="box">
                     <div class="box-header"><h3 class="box-title"></h3></div>
                     <div class="box-body">
-                        <a href="{{ asset('admin/order/create')}}" class="btn btn-primary">{{ trans('view.create') }}</a>
 
                         @if (session()->has('success'))
                             <div class="alert alert-success">

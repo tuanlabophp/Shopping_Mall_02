@@ -52,11 +52,11 @@
                         </div>
 
                         <div class="item">
-                          <img src="{{ asset('upload/slide/sony.jpg') }}" >
+                          <img src="{{ asset('upload/slide/samsung.jpg') }}" >
                         </div>
 
                         <div class="item">
-                          <img src="{{ asset('upload/slide/samsung.jpg') }}" >
+                          <img src="{{ asset('upload/slide/xiaomi.png') }}" >
                         </div>
 
                         <div class="item">
